@@ -12,5 +12,5 @@
 	<h1>${message}</h1>
 </div>	
 </body>
-<%@include file="footer.jsp" %>>
+<%@include file="footer.jsp" %>
 </html>
