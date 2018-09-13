@@ -75,6 +75,8 @@ public class loginCheck extends HttpServlet {
 					message="Welcome "+uname;
 					request.setAttribute("message", message);
 					request.getRequestDispatcher("/member.jsp").forward(request,response);
+					request.getRequestDispatcher("/header.jsp").forward(request,response);
+					
 				}
 
 				else if (count == 1 && dbuname.equals(uname) && !dbpassword.equals(password)) {

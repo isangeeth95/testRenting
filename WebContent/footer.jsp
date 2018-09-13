@@ -17,8 +17,8 @@
 <footer class="footerFirst">
     <table>
         <tr>
-            <td><a href="index.jsp"/>About Us</td>
-            <td><a href="index.jsp"/>Help & Contact </td>
+            <td><a href="aboutUs.jsp"/>About Us</td>
+            <td><a href="contact.jsp"/>Help & Contact </td>
         </tr>
     </table>
 </footer>

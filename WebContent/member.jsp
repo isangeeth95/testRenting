@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Home</title>
 </head>
 <%@include file="header.jsp" %>
 <body>
 <div class="container">
-	<h1>${message}</h1>
+	<h1></h1>
 </div>	
 </body>
 <%@include file="footer.jsp" %>
