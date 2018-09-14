@@ -31,18 +31,20 @@
 					</tr>
 					<tr>
 						<td>Gender</td>
-						<td><input style="height:20px; width:20px;" type="radio" name="gender" value="female">female
-							<input style="height:20px; width:20px;" type="radio" name="gender" value="male">male</td>
+						<td><input style="height: 20px; width: 20px;" type="radio"
+							name="gender" value="female">female <input
+							style="height: 20px; width: 20px;" type="radio" name="gender"
+							value="male">male</td>
 					</tr>
 					<tr>
 						<td>Country</td>
-						<td><input id="input" type="text"
-							placeholder="Germany" name="country" required></td>
+						<td><input id="input" type="text" placeholder="Germany"
+							name="country" required></td>
 					</tr>
 					<tr>
 						<td>City</td>
-						<td><input id="input" type="text"
-							placeholder="Boston" name="city" required></td>
+						<td><input id="input" type="text" placeholder="Boston"
+							name="city" required></td>
 					</tr>
 					<tr>
 						<td>Mobile</td>
@@ -55,6 +57,10 @@
 							placeholder="Enter user name" name="uname" required></td>
 					</tr>
 					<tr>
+						<td></td>
+						<td style="font-size: 20px; color: red;">${unameExist}</td>
+					</tr>
+					<tr>
 						<td>Password</td>
 						<td><input id="input" type="password"
 							placeholder="Enter a Password" name="password" required></td>
@@ -65,11 +71,18 @@
 							placeholder="Confirm the Password" name="confirmPassword"
 							required></td>
 					</tr>
+					<tr>
+						<td></td>
+						<td style="font-size: 20px; color: red;">${passwordMatchingErr}</td>
+					</tr>
+
 				</table>
 				<br /> <input type="submit" value="Register" name="submitButton"
 					id="sButton">
 			</form>
 		</div>
+		
+		<h1 style="font-size: 40px; color: red;">${insertUnseccess}</h1>
 
 	</div>
 
