@@ -82,7 +82,7 @@
 			</form>
 		</div>
 		
-		<h1 style="font-size: 40px; color: red;">${insertUnseccess}</h1>
+		<h1 style="font-size: 40px; color: red;">${insertUnsuccess}</h1>
 
 	</div>
 

@@ -24,6 +24,10 @@
 						<td><input id="input" type="password"
 							placeholder="Password" name="password" required></td>
 					</tr>
+					<tr>
+						<td></td>
+						<td style="font-size: 20px; color: red;">${message1}</td>
+					</tr>
 				</table>
 				<br /> <input type="submit" value="Sign in" name="submitButton"
 					id="sButton">

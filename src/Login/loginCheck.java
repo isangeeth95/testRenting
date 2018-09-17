@@ -74,6 +74,7 @@ public class loginCheck extends HttpServlet {
 				if (count == 1 && dbuname.equals(uname) && dbpassword.equals(password)) {
 					message="Welcome "+uname;
 					request.setAttribute("message", message);
+					
 					request.getRequestDispatcher("/member.jsp").forward(request,response);
 					request.getRequestDispatcher("/header.jsp").forward(request,response);
 					
@@ -81,19 +82,19 @@ public class loginCheck extends HttpServlet {
 
 				else if (count == 1 && dbuname.equals(uname) && !dbpassword.equals(password)) {
 					message="Incorrect password";
-					request.setAttribute("message", message);
+					request.setAttribute("message1", message);
 					request.getRequestDispatcher("/login.jsp").forward(request,response);
 				}
 				
 				else if (count > 1) {
 					message="Dupplicate user "+uname;
-					request.setAttribute("message", message);
+					request.setAttribute("message1", message);
 					request.getRequestDispatcher("/login.jsp").forward(request,response);
 				}
 
 				else {
 					message="Cannot find user "+uname;
-					request.setAttribute("message", message);
+					request.setAttribute("message1", message);
 					request.getRequestDispatcher("/login.jsp").forward(request,response);
 				}
 

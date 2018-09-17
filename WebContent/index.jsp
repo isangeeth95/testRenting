@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-
+<h1 align="center;">${registered}</h1>
 
 
 </div>

@@ -9,7 +9,8 @@
 <%@include file="header.jsp" %>
 <body>
 <div class="container">
-	<h1></h1>
+	<h1>${message}</h1>
+	This is the member page
 </div>	
 </body>
 <%@include file="footer.jsp" %>
