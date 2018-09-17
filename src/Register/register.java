@@ -114,7 +114,7 @@ public class register extends HttpServlet {
 				st = conn.createStatement();
 				int i = st.executeUpdate(sql2);				
 
-				if (i==0) {
+				if (i==1) {
 					out.println("User inserted successfully");
 					String message3 = uname + " registerd successfully";
 
