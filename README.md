@@ -3,7 +3,7 @@
 create database test1;
 
 create table users(
-uid int(11) primary key,
+uid int(11) primary key auto_increment,
 fname varchar(50),
 lname varchar(50),
 email varchar(100),
