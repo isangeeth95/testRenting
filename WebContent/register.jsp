@@ -62,7 +62,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td style="font-size: 20px; color: red;">${unameExist}</td>
+						<td style="font-size: 25px; color: red;">${unameExist}</td>
 					</tr>
 					<tr>
 						<td>Password</td>
@@ -77,7 +77,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td style="font-size: 20px; color: red;">${passwordMatchingErr}</td>
+						<td style="font-size: 25px; color: red;">${passwordMatchingErr}</td>
 					</tr>
 
 				</table>
