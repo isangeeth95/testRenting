@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 @CHARSET "ISO-8859-1"; */
-=======
-@CHARSET "ISO-8859-1";
->>>>>>> c65476fd65cffa23f471c433946728d2d1beb731
 .container{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -17,99 +13,13 @@
     border: 1px solid gray;
 }
 
-<<<<<<< HEAD
-=======
-.headerBar{
-    box-sizing: border-box;
-    background-color: white;
-    width: 100%;
-    margin: auto;
-    height: 200px;
-    padding-bottom: 150px;
-    //border: 2px solid black;
-    position: fixed;
-    top: 0px;
-
-}
-
-.headerBar header{
-    padding-left: 30px;
-    float: left;
-    font-weight: bolder;
-    font-size: 6em;
-    //font-style: oblique;
-    font-family: "Verdana";
-    text-shadow: 5px 5px lightgray;
-    color: darkviolet;
-}
-
- .headerBar ul{
-    //border: 2px solid black;
-    //width: 500px;
-    list-style-type: none;
-    padding-top: 20px;
-    margin: auto;
-    float: right;
-}
-
- .headerBar li{
-    align-content: right;
-    float: left;
-    margin: auto;
-    padding: 0px;
-
-}
-
-.headerBar li a{
-    font-family: "Times New Roman";
-    font-size: 20px;
-    font-weight: normal;
-    transition: font-size 1s;
-}
-
-.headerBar li a:hover{
-    font-size: 25px;
-}
-
- #join a{
-     border: 5px solid black;
-     text-decoration: none;
-     width: 100px;
-     margin-right: 20px;
-     padding-top: 0px;
-     background-color: white;
-     color: black;
-     transition: color;
-     transition: font-size 1s;
- }
-
- #join a:hover{
-     background-color: mediumspringgreen;
- }
-
- a{
-     padding-top: 5px;
-    width: 150px;
-    display: block;
-    color: black;
-    font-weight: bold;
-    font-size: 19px;
-    text-align: center;
-
-}
-
->>>>>>> c65476fd65cffa23f471c433946728d2d1beb731
  .nav{
      //padding-top: 40px;
      box-sizing: border-box;
      height: 700px;
      margin: auto;
      //border: 2px solid black;
-<<<<<<< HEAD
      margin-top: 100px;
-=======
-     margin-top: 350px;
->>>>>>> c65476fd65cffa23f471c433946728d2d1beb731
      width: 1420px;
  }
 
@@ -173,85 +83,17 @@
     margin: auto;
 }
 
-<<<<<<< HEAD
 .nav .homeImg img{
 	width:1000px;
     height:650px;
-=======
-.nav .homeImg .slideShow{
-    float: left;
-    display: none;
-    width: 100%;
-    max-height:650px;
-    margin: auto;
-}
-
-#nav1{
-    box-sizing: border-box;
-    clear: none;
-    margin: auto;
-    //padding: 0px;
-    height: 50px;
-    width: 100%;
-    //position: relative;
-    //border: 1px solid cornflowerblue;
-    font-family: "URW Chancery L";
-    background-color: white;
-    box-shadow: 0px 5px grey;
-}
-
-#nav1 table tr{
-    position: center;
-    border-spacing: 0px;
-    padding: 0px;
-    margin: auto;
-}
-
-#nav1 tr a{
-    //border: 2px solid black;
-    height: 35px;
-    margin: auto;
-    width: 150px;
-    font-weight: normal;
-    color: -moz-visitedhyperlinktext;
-    font-weight: bold;
-    font-size: 20px;
-    transition: font-size 1s;
-}
-
-#nav1 td{
-    padding-top: 5px;
-    padding-bottom: 5px;
-    height: 30px;
-    transition: color 2s;
-    //background-color: mediumspringgreen;
-}
-
-#nav1 td:hover a:hover{
-    background-color: mediumspringgreen;
-    font-size: 25px;
-    border-radius: 10px;
-}
-
-.sticky{
-    opacity: 1;
-    position: fixed;
-    top: 200px;
-    width: 100%;
->>>>>>> c65476fd65cffa23f471c433946728d2d1beb731
 }
 
 .container h1{
     font-family: "Times New Roman";
     padding-top: 100px;
-<<<<<<< HEAD
     //margin-left: 20px;
     text-align: center;
     font-size: 100px;
-=======
-    margin-left: 20px;
-    font-size: 50px;
->>>>>>> c65476fd65cffa23f471c433946728d2d1beb731
     font-weight: bold;
     color: darkblue;
     text-shadow: 2px 2px grey;
@@ -259,11 +101,7 @@
 
 .packagesBlock{
     box-sizing: border-box;
-<<<<<<< HEAD
     min-height: 3000px;
-=======
-    min-height: 800px;
->>>>>>> c65476fd65cffa23f471c433946728d2d1beb731
     margin: auto;
     //border: 2px solid black;
     margin-top: 50px;
@@ -271,7 +109,6 @@
 
 
 #packagesBase1{
-<<<<<<< HEAD
 	border: 2px solid grey;
     box-sizing: border-box;
     min-width: 1050px;
@@ -294,22 +131,10 @@
     box-sizing: border-box;
     min-width: 1050px;
     margin-left: 600px;
-=======
-    box-sizing: border-box;
-    width: 20%;
-    margin-top: 50px;
-    float: left;
-}
-
-#packagesBase2{
-    box-sizing: border-box;
-    width: 20%;
->>>>>>> c65476fd65cffa23f471c433946728d2d1beb731
     margin-top: 100px;
     float: left;
 }
 
-<<<<<<< HEAD
 #packagesBase2 img{
 /* 	border: 2px solid black; */
 /*     box-sizing: border-box; */
@@ -341,50 +166,13 @@
     //border: 1px solid blue;
     padding: 0px 10px 0px;
     text-align: center;
-=======
-#packagesBase3{
-    box-sizing: border-box;
-    width: 20%;
-    margin-top: 150px;
-    float: left;
-}
-
-#packagesBase4{
-    box-sizing: border-box;
-    width: 20%;
-    margin-top: 200px;
-    float: left;
-}
-
-#packagesBase5{
-    box-sizing: border-box;
-    width: 20%;
-    margin-top: 250px;
-    float: left;
-}
-
-
-#packagesBase1,#packagesBase2,#packagesBase3,#packagesBase4,#packagesBase5, p{
-    //border: 1px solid blue;
-    padding: 0px 10px 0px;
-    text-align: justify;
-}
-
-#packagesBase1,#packagesBase2,#packagesBase3,#packagesBase4,#packagesBase5, img{
-    text-align: center;
-    box-shadow: black;
->>>>>>> c65476fd65cffa23f471c433946728d2d1beb731
 }
 
 .quote-box{
     box-sizing: border-box;
     width: 800px;
     height: 700px;
-<<<<<<< HEAD
     border: 2px solid black;
-=======
-    //border: 2px solid black;
->>>>>>> c65476fd65cffa23f471c433946728d2d1beb731
     margin: auto;
 }
 

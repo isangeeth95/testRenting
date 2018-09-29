@@ -1,4 +1,4 @@
-package Register;
+package register;
 
 import java.io.IOException;
 import java.io.PrintWriter;
