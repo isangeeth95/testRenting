@@ -59,7 +59,7 @@ public class loginCheck extends HttpServlet {
 			write.write("Connection Established");
 
 			String message=null;
-			String sql = "select uname,password from login where uname='"+uname+"'";
+			String sql = "select uname,password from users where uname='"+uname+"'";
 			try {
 				Statement st = conn.createStatement();
 				ResultSet rs = st.executeQuery(sql);
@@ -75,7 +75,7 @@ public class loginCheck extends HttpServlet {
 					message="Welcome "+uname;
 					request.setAttribute("message", message);
 					
-					request.getRequestDispatcher("/member.jsp").forward(request,response);
+					request.getRequestDispatcher("/home.jsp").forward(request,response);
 					request.getRequestDispatcher("/header.jsp").forward(request,response);
 					
 				}

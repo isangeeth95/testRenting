@@ -73,11 +73,12 @@ public class register extends HttpServlet {
 			try {
 				Statement st = conn.createStatement();
 				String sql = "select * from users where uname = '"
-						+ user.getUname() + "'";
+						+ user.getUname() + "' or email = '" + user.getEmail()
+						+ "'";
 				ResultSet rs = st.executeQuery(sql);
 
 				if (rs.next()) {
-					Object message = user.getUname() + " is exist";
+					Object message = "Username or Email exist";
 					request.setAttribute("unameExist", message);
 					request.getRequestDispatcher("/register.jsp").forward(
 							request, response);
@@ -92,8 +93,8 @@ public class register extends HttpServlet {
 							request, response);
 					request.getRequestDispatcher("/header.jsp").forward(
 							request, response);
-				} 
-				
+				}
+
 				else if (!user.getEmail().matches(
 						"^[A-Z0-9a-z._%+-]+@[A-Z0-9a-z]+\\.[A-Za-z]{2,6}$")) {
 					Object message = "Use Standered email";
@@ -124,8 +125,8 @@ public class register extends HttpServlet {
 
 					Object message = user.getUname() + " Registered";
 					request.setAttribute("message", message);
-					request.getRequestDispatcher("/member.jsp").forward(
-							request, response);
+					request.getRequestDispatcher("/home.jsp").forward(request,
+							response);
 					request.getRequestDispatcher("/header.jsp").forward(
 							request, response);
 

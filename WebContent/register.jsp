@@ -62,7 +62,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td style="font-size: 20px; color: red;">${unameExist}</td>
+						<td style="font-size: 25px; color: red;">${unameExist}</td>
 					</tr>
 					<tr>
 						<td>Password</td>
@@ -77,7 +77,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td style="font-size: 20px; color: red;">${passwordMatchingErr}</td>
+						<td style="font-size: 25px; color: red;">${passwordMatchingErr}</td>
 					</tr>
 
 				</table>
@@ -85,12 +85,14 @@
 					id="sButton">
 			</form>
 		</div>
-		
+
 		<h1 style="font-size: 40px; color: red;">${insertUnsuccess}</h1>
 
+		<div class="form1">
+		<a href="addDrivers.jsp" class="driverReg">Click here to REGISTER AS A DRIVER</a>
+		</div>
+
 	</div>
-
-
 </body>
 <%@include file="footer.jsp"%>
 </html>

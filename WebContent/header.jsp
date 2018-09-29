@@ -26,7 +26,7 @@
 	<div id="nav1">
 		<table>
 			<tr>
-				<td><a href="index.jsp" />Home</td>
+				<td><a href="home.jsp" />Home</td>
 				<td><a href="#" />Services</td>
 				<td><a href="#" />Shop</td>
 				<td><a href="aboutUs.jsp" />About Us</td>
