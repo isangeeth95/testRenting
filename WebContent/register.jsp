@@ -12,7 +12,7 @@
 	<div class="container">
 		<h1 style="text-align: center; font-size: 50px">JOIN FOR FREE</h1>
 		<div class="form">
-			<form action="register" method="post">
+			<form action="register" method="post" enctype="multipart/form-data">
 				<table class="table">
 					<tr>
 						<td>First Name</td>
@@ -79,6 +79,11 @@
 						<td></td>
 						<td style="font-size: 25px; color: red;">${passwordMatchingErr}</td>
 					</tr>
+					<tr>
+						<td>Upload Image</td>
+						<td><input id="input" type="file" name="image"></td>
+					</tr>
+					
 
 				</table>
 				<br /> <input type="submit" value="Register" name="submitButton"

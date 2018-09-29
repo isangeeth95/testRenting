@@ -1,5 +1,7 @@
 package register;
 
+import javax.servlet.http.Part;
+
 public class User {
 
 	private String fname; // first name
@@ -12,6 +14,17 @@ public class User {
 	private String uname;
 	private String password;
 	private String confPassword;
+	private String imageName;
+	private String path;
+
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
 
 	public String getFname() {
 		return fname;
@@ -93,11 +106,32 @@ public class User {
 		this.confPassword = confPassword;
 	}
 
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	@Override
 	public String toString() {
-		return "User name = " + uname + "\n" + "First name = " + fname + "\n"
-				+ "Last name = " + lname + "\n" + "e-mail = " + email + "\n"
-				+ "Gender = " + gender + "\n" + "Mobile = " + telNo + "\n"
-				+ "Password = " + password;
+		return "User [fname=" + fname + ", lname=" + lname + ", email=" + email
+				+ ", gender=" + gender + ", country=" + country + ", city="
+				+ city + ", telNo=" + telNo + ", uname=" + uname
+				+ ", password=" + password + ", confPassword=" + confPassword
+				+ ", imageName=" + imageName + ", path=" + path + "]";
+	}
+
+	public String extractImageName(Part part){
+		String contentDisp=part.getHeader("content-disposition");
+		String[] items=contentDisp.split(";");
+		for(String s:items){
+			if(s.trim().startsWith("filename")){
+				return s.substring(s.indexOf("=") + 2,s.length() -1);
+			}
+		}
+		return "";
 	}
 
 }

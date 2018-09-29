@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,14 +11,22 @@
 </head>
 <body style="background-color: whitesmoke">
 
+	<%
+		String imageName = (String) request.getAttribute("imageName");
+	%>
+
+
 	<div class="headerBar">
-		<header>
-		<img src="homeImages/LOGO.png"></header>
-
-
+		<header> <img src="homeImages/LOGO.png"></header>
 
 		<ul>
-			<h1>${message}</h1>
+			<table>
+				<tr>
+					<td><h1>${message}</h1></td>
+					<td><img src="usersImages/<%=imageName%>" width="100"
+						height="100"></td>
+				</tr>
+			</table>
 			<li><a href="login.jsp">Sign in</a></li>
 			<li id="join"><a href="register.jsp">Join</a></li>
 		</ul>

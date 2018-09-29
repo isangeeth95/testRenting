@@ -1,6 +1,7 @@
 package Login;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.sql.*;
 
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 /**
  * Servlet implementation class loginCheck
@@ -45,6 +47,8 @@ public class loginCheck extends HttpServlet {
 		String uname = request.getParameter("uname").trim();
 		String password = request.getParameter("password").trim();
 		String dbuname = null,dbpassword=null;
+		
+		String imageName=null;
 
 		response.setContentType("text/html");
 		PrintWriter write=response.getWriter();
@@ -59,7 +63,7 @@ public class loginCheck extends HttpServlet {
 			write.write("Connection Established");
 
 			String message=null;
-			String sql = "select uname,password from users where uname='"+uname+"'";
+			String sql = "select uname,password,imageName from users where uname='"+uname+"'";
 			try {
 				Statement st = conn.createStatement();
 				ResultSet rs = st.executeQuery(sql);
@@ -68,12 +72,15 @@ public class loginCheck extends HttpServlet {
 				while (rs.next()) {
 					dbuname=(rs.getString(1));
 					dbpassword=(rs.getString(2));
+					imageName=(rs.getString(3));
 					count += 1;
 				}
 
 				if (count == 1 && dbuname.equals(uname) && dbpassword.equals(password)) {
-					message="Welcome "+uname;
+					message=uname;
 					request.setAttribute("message", message);
+				
+					request.setAttribute("imageName", imageName);
 					
 					request.getRequestDispatcher("/home.jsp").forward(request,response);
 					request.getRequestDispatcher("/header.jsp").forward(request,response);

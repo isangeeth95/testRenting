@@ -1,5 +1,6 @@
 package register;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -8,45 +9,29 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import Login.DBManager;
 
 /**
- * Servlet implementation class register
+ * Servlet implementation class registerImage
  */
 @WebServlet("/register")
+@MultipartConfig(fileSizeThreshold = 1024*1024*2,
+		maxFileSize = 1024*1024*10,
+		maxRequestSize = 1024*1024*50)
 public class register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public register() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = new User();
 
 		user.setFname(request.getParameter("fname"));
@@ -59,11 +44,18 @@ public class register extends HttpServlet {
 		user.setUname(request.getParameter("uname"));
 		user.setPassword(request.getParameter("password"));
 		user.setConfPassword(request.getParameter("confirmPassword"));
+	
 
 		response.setContentType("text/html");
 
 		PrintWriter write = response.getWriter();
-
+		
+		Part part=request.getPart("image");
+		user.setImageName(user.extractImageName(part));
+		user.setPath("C:\\Users\\sangeeth\\workspaceNew\\yamudarawmak\\WebContent\\usersImages\\"+File.separator+user.getImageName());
+		File fileSaveDir=new File(user.getPath());
+		part.write(user.getPath()+File.separator);
+		
 		DBManager db = new DBManager();
 		Connection conn = db.getConnection();
 
@@ -106,11 +98,12 @@ public class register extends HttpServlet {
 				}
 
 				else {
-					String sql2 = "insert into users (fname,lname,email,gender,country,city,telNo,uname,password)"
-							+ "values(?,?,?,?,?,?,?,?,?)";
+					
+					String sql2 = "insert into users (fname,lname,email,gender,country,city,telNo,uname,password,imageName,path)"
+							+ "values(?,?,?,?,?,?,?,?,?,?,?)";
 
 					PreparedStatement pre = conn.prepareStatement(sql2);
-
+					
 					pre.setString(1, user.getFname());
 					pre.setString(2, user.getLname());
 					pre.setString(3, user.getEmail());
@@ -120,11 +113,15 @@ public class register extends HttpServlet {
 					pre.setString(7, user.getTelNo());
 					pre.setString(8, user.getUname());
 					pre.setString(9, user.getPassword());
+					pre.setString(10, user.getImageName());
+					pre.setString(11, user.getPath());
 
 					pre.execute();
 
-					Object message = user.getUname() + " Registered";
+					Object message = user.getUname();
+					String imageName=user.getImageName();
 					request.setAttribute("message", message);
+					request.setAttribute("imageName", imageName);
 					request.getRequestDispatcher("/home.jsp").forward(request,
 							response);
 					request.getRequestDispatcher("/header.jsp").forward(
@@ -137,6 +134,7 @@ public class register extends HttpServlet {
 			}
 
 		}
+	
 	}
 
 }
