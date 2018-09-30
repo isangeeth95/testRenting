@@ -9,7 +9,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="member.css">
 <title>${message}</title>
-<%@include file="header.jsp"%>
+
+<%
+if(session.getAttribute("username")==null) {
+%>
+<jsp:include page="header.jsp"></jsp:include>
+<%
+} else {
+%>
+<jsp:include page="afterLoginHeader.jsp"></jsp:include>
+<%
+}%>
+
 <body>
 	<div class="container">
 

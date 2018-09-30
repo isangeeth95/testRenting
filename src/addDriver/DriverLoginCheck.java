@@ -95,7 +95,7 @@ public class DriverLoginCheck extends HttpServlet {
 					message="Welcome "+session.getAttribute("username");
 					request.setAttribute("message", message);
 					request.getRequestDispatcher("viewDriver.jsp").forward(request,response);
-					request.getRequestDispatcher("/header.jsp").forward(request,response);
+					request.getRequestDispatcher("afterLoginHeader.jsp").forward(request,response);
 					
 				}
 

@@ -7,7 +7,18 @@
 <link rel="stylesheet" type="text/css" href="contact.css">
 <title>Contact</title>
 </head>
-<%@include file="header.jsp"%>
+
+<%
+if(session.getAttribute("username")==null) {
+%>
+<jsp:include page="header.jsp"></jsp:include>
+<%
+} else {
+%>
+<jsp:include page="afterLoginHeader.jsp"></jsp:include>
+<%
+}%>
+
 <body>
 	<div class="container">
 

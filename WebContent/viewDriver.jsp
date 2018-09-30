@@ -6,7 +6,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<%@include file="header.jsp"%>
+
+<%
+if(session.getAttribute("username")==null) {
+%>
+<jsp:include page="header.jsp"></jsp:include>
+<%
+} else {
+%>
+<jsp:include page="afterLoginHeader.jsp"></jsp:include>
+<%
+}%>
+
 <body>
 	<div class="container">
 

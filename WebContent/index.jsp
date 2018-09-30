@@ -5,7 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Home</title>
-<%@include file="header.jsp"%>
+<%
+if(session.getAttribute("username")==null) {
+%>
+<jsp:include page="header.jsp"></jsp:include>
+<%
+} else {
+%>
+<jsp:include page="afterLoginHeader.jsp"></jsp:include>
+<%
+}%>
 </head>
 <body>
 	<div class="container">

@@ -83,7 +83,7 @@ public class loginCheck extends HttpServlet {
 					request.setAttribute("imageName", imageName);
 					
 					request.getRequestDispatcher("/home.jsp").forward(request,response);
-					request.getRequestDispatcher("/header.jsp").forward(request,response);
+					request.getRequestDispatcher("/afterLoginHeader.jsp").forward(request,response);
 					
 				}
 

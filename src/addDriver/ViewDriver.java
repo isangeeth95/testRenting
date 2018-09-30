@@ -41,7 +41,7 @@ public class ViewDriver extends HttpServlet {
 		out.print("<html>");
 		out.print("<head>");
 		out.print("<title>View driver</title>");
-		RequestDispatcher rd = request.getRequestDispatcher("/header.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/afterLoginHeader.jsp");
 		rd.include(request, response);
 		out.print("<head>");
 		out.print("<body>");

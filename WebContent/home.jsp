@@ -10,7 +10,19 @@
 <script src="javascript.js" type="text/javascript"></script>
 <title>Home</title>
 </head>
-<%@include file="header.jsp"%>
+
+
+<%
+if(session.getAttribute("username")==null) {
+%>
+<jsp:include page="header.jsp"></jsp:include>
+<%
+} else {
+%>
+<jsp:include page="afterLoginHeader.jsp"></jsp:include>
+<%
+}%>
+
 <body style="background-color: whitesmoke">
 	<div class="container">
 
