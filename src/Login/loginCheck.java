@@ -1,7 +1,6 @@
 package Login;
 
 import java.io.IOException;
-
 import java.io.PrintWriter;
 import java.sql.*;
 
@@ -10,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 /**
@@ -62,7 +62,7 @@ public class loginCheck extends HttpServlet {
 		else {
 			write.write("Connection Established");
 
-			String message=null;
+			String message=null;	
 			String sql = "select uname,password,imageName from users where uname='"+uname+"'";
 			try {
 				Statement st = conn.createStatement();
@@ -77,9 +77,14 @@ public class loginCheck extends HttpServlet {
 				}
 
 				if (count == 1 && dbuname.equals(uname) && dbpassword.equals(password)) {
-					message=uname;
+					HttpSession session = request.getSession();
+					
+					session.setAttribute("loggedAs", "user");
+					session.setAttribute("username", dbuname);
+					session.setAttribute("password", dbpassword);
+					
+					message=(String)session.getAttribute("username");
 					request.setAttribute("message", message);
-				
 					request.setAttribute("imageName", imageName);
 					
 					request.getRequestDispatcher("/home.jsp").forward(request,response);

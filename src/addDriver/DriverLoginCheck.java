@@ -84,6 +84,7 @@ public class DriverLoginCheck extends HttpServlet {
 					
 					HttpSession session = request.getSession();
 					
+					session.setAttribute("loggedAs", "driver");
 					session.setAttribute("username", dbuname);
 					session.setAttribute("fname", dbfname);
 					session.setAttribute("lname", dblname);

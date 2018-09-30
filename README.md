@@ -30,3 +30,9 @@ NIC char(10) unique,
 mobile int(11),
 password varchar(50) not null
 );
+
+
+
+
+
+String sql= uid,fname,lname,email,gender,country,city,telNo,uname,password,imageName,path

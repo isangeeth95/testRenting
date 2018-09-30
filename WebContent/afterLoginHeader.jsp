@@ -41,6 +41,17 @@
 				<td><a href="aboutUs.jsp" />About Us</td>
 				<td><a href="#" />Gallery</td>
 				<td><a href="contact.jsp" />Contact Us</td>
+				<%
+					if (session.getAttribute("loggedAs") == "driver") {
+				%>
+				<td><a href="ViewDriver" />Profile</td>
+				<%
+					}
+					if (session.getAttribute("loggedAs") == "user") {
+				%>
+				<td><a href="ViewUser" />Profile</td>
+				<%
+				}%>
 			</tr>
 		</table>
 	</div>

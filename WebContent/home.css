@@ -13,6 +13,17 @@
     border: 1px solid gray;
 }
 
+.list-button {
+    background-color: #00FF00; /* green */
+    color: black;
+    width: 100%;
+    padding: 8px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
  .nav{
      //padding-top: 40px;
      box-sizing: border-box;

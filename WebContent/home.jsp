@@ -13,19 +13,19 @@
 
 
 <%
-if(session.getAttribute("username")==null) {
+	if (session.getAttribute("username") == null) {
 %>
 <jsp:include page="header.jsp"></jsp:include>
 <%
-} else {
+	} else {
 %>
 <jsp:include page="afterLoginHeader.jsp"></jsp:include>
 <%
-}%>
+	}
+%>
 
 <body style="background-color: whitesmoke">
 	<div class="container">
-
 		<div class="nav">
 			<div class="transparent">
 				<div class="color">
@@ -42,7 +42,7 @@ if(session.getAttribute("username")==null) {
 			<div class="homeImg">
 				<img src="homeImages/homeImage2.jpg">
 			</div>
-			
+
 		</div>
 
 		<h1>YOUR CHOICE</h1>
