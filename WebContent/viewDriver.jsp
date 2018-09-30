@@ -8,19 +8,31 @@
 </head>
 <%@include file="header.jsp"%>
 <body>
+
 	<div style="height: 50%;width: 50%;margin-top: 250px;margin-left: 200px;margin-bottom: 200px;padding: 30px;border:1px solid black">
-	<form action="./ViewDriver">
+		
+		<%
+		if(session != null){
+			if(session.getAttribute("username")!= null){
+				String fname = (String) session.getAttribute("fname");
+				String lname = (String)session.getAttribute("lname");
+				out.print("Hello " + fname + " " + lname + " Welcome ");
+			}
+			else{
+				response.sendRedirect("driverLogin.jsp");
+			}
+		}
+		%>
+		<form action="ViewDriver">
 		<table>
 			<tr>
-				<td>Enter the user name : </td>
-				<td><input type="text" name="uname"></td>
-			</tr>
-			<tr>
-				<td colspan="1"><input type="submit" value="Search"></td>
+				<br><br>
+				<td colspan="1"><input type="submit" value="Click to see your frofile"></td>
 			</tr>
 		</table>
-	</form>
+		</form>
 	</div>
+
 </body>
 <%@include file="footer.jsp"%>
 </html>
