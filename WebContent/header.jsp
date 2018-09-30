@@ -13,6 +13,7 @@
 
 	<%
 		String imageName = (String) request.getAttribute("imageName");
+		String uname=(String)session.getAttribute("username");
 	%>
 
 
@@ -22,7 +23,7 @@
 		<ul>
 			<table>
 				<tr>
-					<td><h1>${message}</h1></td>
+					<td><h1><%=uname%></h1></td>
 					<td><img src="usersImages/<%=imageName%>" width="100"
 						height="100"></td>
 				</tr>

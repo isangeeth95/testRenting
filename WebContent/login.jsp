@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="login.css">
-<title>Register</title>
+<title>Login</title>
 </head>
 <%@include file="header.jsp"%>
 <body>
@@ -16,13 +16,13 @@
 				<table class="table">
 					<tr>
 						<td>User name</td>
-						<td><input id="input" type="text"
-							placeholder="User name" name="uname" required></td>
+						<td><input id="input" type="text" placeholder="User name"
+							name="uname" required></td>
 					</tr>
 					<tr>
 						<td>Password</td>
-						<td><input id="input" type="password"
-							placeholder="Password" name="password" required></td>
+						<td><input id="input" type="password" placeholder="Password"
+							name="password" required></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -34,8 +34,10 @@
 			</form>
 		</div>
 
+		<div class="formDriverLogin">
+		<a href="driverLogin.jsp" class="driverLogin">Click here to LOGIN AS A DRIVER</a>
+		</div>
+
 	</div>
-
-
 </body>
 <%@include file="footer.jsp"%>

@@ -92,7 +92,7 @@ public class DriverLoginCheck extends HttpServlet {
 					session.setAttribute("mobile", dbmobile);
 					session.setAttribute("password", dbpassword);
 					
-					message="Welcome "+uname;
+					message="Welcome "+session.getAttribute("username");
 					request.setAttribute("message", message);
 					request.getRequestDispatcher("viewDriver.jsp").forward(request,response);
 					request.getRequestDispatcher("/header.jsp").forward(request,response);
