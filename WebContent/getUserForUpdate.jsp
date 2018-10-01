@@ -22,17 +22,14 @@
 <body>
 	<div class="container">
 
-		<h2>Update User Information</h2>
+		<h1 style="text-align: center; font-size: 50px">Update User Information</h1>
 		<br> <br>
 		<%
 		User user=(User)request.getAttribute("user");
 	%>
 	
-	<h1><%=user.getUid() %></h1>
-	<h1><%=user.getFname() %></h1>
-
 		<div class="form">
-			<form action="updateUserServlet" method="post" enctype="multipart/form-data">
+			<form action="updateUserServlet" method="post">
 				<table class="table">
 					
 					<tr>
@@ -48,7 +45,7 @@
 					<tr>
 						<td>Last Name</td>
 						<td><input id="input" type="text"
-							value="Nimal" name="lname"></td>
+							value="<%=user.getLname() %>" name="lname"></td>
 					</tr>
 					<tr>
 						<td>E mail</td>
@@ -92,22 +89,18 @@
 					</tr>
 					<tr>
 						<td>Password</td>
-						<td><input id="input" type="password"
+						<td><input id="input" type="text"
 							value="<%=user.getPassword() %>" name="password"></td>
 					</tr>
 					<tr>
 						<td>Confirm password</td>
-						<td><input id="input" type="password"
-							placeholder="Confirm the Password" name="confirmPassword"
+						<td><input id="input" type="password" value="<%=user.getPassword()%>"
+							name="confirmPassword"
 							required></td>
 					</tr>
 					<tr>
 						<td></td>
 						<td style="font-size: 25px; color: red;">${passwordMatchingErr}</td>
-					</tr>
-					<tr>
-						<td>Upload Image</td>
-						<td><input id="input" type="file" value="<%=user.getImageName() %>" name="image"></td>
 					</tr>
 
 

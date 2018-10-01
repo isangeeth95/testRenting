@@ -40,6 +40,7 @@
 					<th>User Name</th>
 					<th>Password</th>
 					<th>Image</th>
+					<th>Options</th>
 				</tr>
 				<%
 					User user = (User) request.getAttribute("user");
@@ -56,13 +57,19 @@
 					<td><%=user.getTelNo()%></td>
 					<td><%=user.getUname()%></td>
 					<td><%=user.getPassword()%></td>
-					<td><img src="usersImages/<%=user.getImageName() %>" width="150"
-						height="150"></td>
+					<td><img src="usersImages/<%=user.getImageName() %>"  width="150"
+						height="150">
+						<form method="POST" action="getUserImageServlet">
+							<input type="hidden" name="uid>"
+								value="<%=session.getAttribute("uid")%>" /> <input type="submit"
+								value="Change" class="select-button" />
+						</form>
+						</td>
 					<td>
 						<form method="POST" action="getUserServlet">
-							<input type="text" name="uid>"
+							<input type="hidden" name="uid>"
 								value="<%=session.getAttribute("uid")%>" /> <input type="submit"
-								value="Select User" class="select-button" />
+								value="Edit User" class="select-button" />
 						</form>
 					</td>
 				</tr>

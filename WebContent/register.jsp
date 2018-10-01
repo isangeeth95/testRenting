@@ -81,7 +81,7 @@
 					</tr>
 					<tr>
 						<td>Upload Image</td>
-						<td><input id="input" type="file" name="image"></td>
+						<td><input id="input" type="file" name="image" required></td>
 					</tr>
 					
 

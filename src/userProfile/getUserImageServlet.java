@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,21 +13,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Login.DBManager;
 import register.User;
-
+import Login.DBManager;
 
 /**
- * Servlet implementation class getUserServlet
+ * Servlet implementation class getUserImageServlet
  */
-@WebServlet("/getUserServlet")
-public class getUserServlet extends HttpServlet {
+@WebServlet("/getUserImageServlet")
+public class getUserImageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public getUserServlet() {
+    public getUserImageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -57,31 +55,22 @@ public class getUserServlet extends HttpServlet {
 		try{
 			
 			Statement st = conn.createStatement();
-			String sql = "select fname,lname,email,gender,country,city,telNo,uname,password from users where uid = '"+user.getUid()+"'";
+			String sql = "select imageName,path from users where uid = '"+user.getUid()+"'";
 			ResultSet rs = st.executeQuery(sql);
 			
 			while(rs.next()){
 				
-				user.setFname(rs.getString(1));
-				user.setLname(rs.getString(2));
-				user.setEmail(rs.getString(3));
-				user.setGender(rs.getString(4));
-				user.setCountry(rs.getString(5));
-				user.setCity(rs.getString(6));
-				user.setTelNo(rs.getString(7));
-				user.setUname(rs.getString(8));
-				user.setPassword(rs.getString(9));
+				user.setImageName(rs.getString(1));
+				user.setPath(rs.getString(2));
 				
 			}
 			
 			request.setAttribute("user", user);
-			request.getRequestDispatcher("/getUserForUpdate.jsp").forward(request,response);
+			request.getRequestDispatcher("/getUserForImageUpdate.jsp").forward(request,response);
 		}
 		catch(Exception p){
 			System.out.println(p);
 		}
-		
-		
 	}
 
 }

@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,29 +26,35 @@ import Login.DBManager;
 @WebServlet("/updateUserServlet")
 public class updateUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public updateUserServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public updateUserServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		User user = new User();
 
-		user.setUid(request.getParameter("uid"));
+		HttpSession session = request.getSession();
+			
+		user.setUid((String)session.getAttribute("uid"));
 		user.setFname(request.getParameter("fname"));
 		user.setLname(request.getParameter("lname"));
 		user.setEmail(request.getParameter("email"));
@@ -62,26 +69,76 @@ public class updateUserServlet extends HttpServlet {
 		response.setContentType("text/html");
 
 		PrintWriter out = response.getWriter();
-
 		
-					out.print("<tr><td>");
-					out.println(user.getUid());
-					out.print("</td>");
-					out.print("<tr><td>");
-					out.println(user.getFname());
-					out.print("</td>");
-					out.print("<tr><td>");
-					out.println(user.getLname());
-					out.print("</td>");
-					out.print("<tr><td>");
-					out.println(user.getEmail());
-					out.print("</td>");
-					out.print("<tr><td>");
-					out.println(user.getGender());
-					out.print("</td>");
+		DBManager db = new DBManager();
+		Connection conn = db.getConnection();
 
-				
-		
+		if (conn == null) {
+			out.write("Connection Not Established");
+		} else {
+			try {
+				Statement st = conn.createStatement();
+				String sql = "select * from users where (uname = '"
+						+ user.getUname() + "' or email = '" + user.getEmail()
+						+ "') and uid<>'" + user.getUid() + "'";
+				ResultSet rs = st.executeQuery(sql);
+
+				if (rs.next()) {
+					Object message = "Username or Email exist";
+					request.setAttribute("unameExist", message);
+					request.getRequestDispatcher("/getUserForUpdate.jsp")
+							.forward(request, response);
+				}
+
+				else if (!user.getPassword().equals(user.getConfPassword())) {
+					Object message = "Password not maching";
+					request.setAttribute("passwordMatchingErr", message);
+					request.getRequestDispatcher("/getUserForUpdate.jsp")
+							.forward(request, response);
+				}
+
+				else if (!user.getEmail().matches(
+						"^[A-Z0-9a-z._%+-]+@[A-Z0-9a-z]+\\.[A-Za-z]{2,6}$")) {
+					Object message = "Use Standered email";
+					request.setAttribute("emailErr", message);
+					request.getRequestDispatcher("/getUserForUpdate.jsp")
+							.forward(request, response);
+				}
+
+				else {
+
+					String sql2 = "update users set " + "fname='"
+							+ user.getFname() + "'," + "lname='"
+							+ user.getLname() + "'," + "email='"
+							+ user.getEmail() + "'," + "gender='"
+							+ user.getGender() + "'," + "country='"
+							+ user.getCountry() + "'," + "city='"
+							+ user.getCity() + "'," + "telNo='"
+							+ user.getTelNo() + "'," + "uname='"
+							+ user.getUname() + "'," + "password='"
+							+ user.getPassword() + "'" + " where uid='"
+							+ user.getUid() + "'";
+
+					Statement st1=conn.createStatement();
+					st1.executeUpdate(sql2);
+
+					session.setAttribute("loggedAs", "user");
+					session.setAttribute("username", user.getUname());
+					session.setAttribute("password", user.getPassword());
+
+					String message = (String) session.getAttribute("username");
+					request.setAttribute("message", message);
+
+					request.getRequestDispatcher("/home.jsp").forward(request,
+							response);
+					request.getRequestDispatcher("/afterLoginHeader.jsp")
+							.forward(request, response);
+				}
+			} catch (Exception e) {
+				System.out.println("Got an exception");
+				System.out.println(e.getMessage());
+			}
+		}
 
 	}
 

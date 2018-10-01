@@ -46,7 +46,7 @@ public class loginCheck extends HttpServlet {
 
 		String uname = request.getParameter("uname").trim();
 		String password = request.getParameter("password").trim();
-		String dbuname = null,dbpassword=null;
+		String dbuname = null,dbpassword=null,dbUid=null;
 		
 		String imageName=null;
 
@@ -63,16 +63,17 @@ public class loginCheck extends HttpServlet {
 			write.write("Connection Established");
 
 			String message=null;	
-			String sql = "select uname,password,imageName from users where uname='"+uname+"'";
+			String sql = "select uid,uname,password,imageName from users where uname='"+uname+"'";
 			try {
 				Statement st = conn.createStatement();
 				ResultSet rs = st.executeQuery(sql);
 				
 				int count = 0;
 				while (rs.next()) {
-					dbuname=(rs.getString(1));
-					dbpassword=(rs.getString(2));
-					imageName=(rs.getString(3));
+					dbUid=(rs.getString(1));
+					dbuname=(rs.getString(2));
+					dbpassword=(rs.getString(3));
+					imageName=(rs.getString(4));
 					count += 1;
 				}
 
@@ -80,6 +81,7 @@ public class loginCheck extends HttpServlet {
 					HttpSession session = request.getSession();
 					
 					session.setAttribute("loggedAs", "user");
+					session.setAttribute("uid", dbUid);
 					session.setAttribute("username", dbuname);
 					session.setAttribute("password", dbpassword);
 					if(imageName!=null)

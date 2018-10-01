@@ -1,5 +1,7 @@
 package register;
 
+import java.io.File;
+
 import javax.servlet.http.Part;
 
 public class User {
@@ -17,7 +19,7 @@ public class User {
 	private String confPassword;
 	private String imageName;
 	private String path;
-
+	
 	public String getUid() {
 		return uid;
 	}
@@ -122,7 +124,7 @@ public class User {
 		this.path = path;
 	}
 
-	
+
 	@Override
 	public String toString() {
 		return "User [uid="+uid+", fname=" + fname + ", lname=" + lname

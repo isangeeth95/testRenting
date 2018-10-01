@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+
 import Login.DBManager;
 
 /**
@@ -47,27 +49,13 @@ public class register extends HttpServlet {
 
 		response.setContentType("text/html");
 
-		PrintWriter write = response.getWriter();
-
-		if (request.getParameter("image") != null) {
-			Part part = request.getPart("image");
-			user.setImageName(user.extractImageName(part));
-			user.setPath("C:\\Users\\sangeeth\\workspaceNew\\yamudarawmak\\WebContent\\usersImages\\"
-					+ File.separator + user.getImageName());
-			File fileSaveDir = new File(user.getPath());
-			part.write(user.getPath() + File.separator);
-		}
-
-		else
-			user.setImageName("defaultUser.png");
-			user.setPath("C:\\Users\\sangeeth\\workspaceNew\\yamudarawmak\\WebContent\\usersImages\\"
-				+ File.separator + user.getImageName());
-
+		PrintWriter out = response.getWriter();
+				
 		DBManager db = new DBManager();
 		Connection conn = db.getConnection();
 
 		if (conn == null) {
-			write.write("Connection Not Established");
+			out.write("Connection Not Established");
 		} else {
 			try {
 				Statement st = conn.createStatement();
@@ -111,6 +99,7 @@ public class register extends HttpServlet {
 
 					PreparedStatement pre = conn.prepareStatement(sql2);
 
+					
 					pre.setString(1, user.getFname());
 					pre.setString(2, user.getLname());
 					pre.setString(3, user.getEmail());
@@ -120,9 +109,19 @@ public class register extends HttpServlet {
 					pre.setString(7, user.getTelNo());
 					pre.setString(8, user.getUname());
 					pre.setString(9, user.getPassword());
+					
+					if (ServletFileUpload.isMultipartContent(request)) {
+						Part part = request.getPart("image");
+						user.setImageName(user.extractImageName(part));
+						user.setPath("C:\\Users\\sangeeth\\workspaceNew\\yamudarawmak\\WebContent\\usersImages\\"
+								+ File.separator + user.getImageName());
+						File fileSaveDir = new File(user.getPath());
+						part.write(user.getPath() + File.separator);
+					
 					pre.setString(10, user.getImageName());
 					pre.setString(11, user.getPath());
-
+					}
+					
 					pre.execute();
 
 					Object message = user.getUname();
@@ -140,8 +139,11 @@ public class register extends HttpServlet {
 				System.out.println(e.getMessage());
 			}
 
+
 		}
 
+
+		
 	}
 
 }
