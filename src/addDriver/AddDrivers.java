@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Login.DBManager;
 
+
 /**
  * Servlet implementation class AddDrivers
  */
@@ -24,33 +25,29 @@ import Login.DBManager;
 public class AddDrivers extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String sql;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public AddDrivers() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public AddDrivers() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		Driver driver = new Driver();
-
+		
 		driver.setuName(request.getParameter("uname"));
 		driver.setFname(request.getParameter("fname"));
 		driver.setLname(request.getParameter("lname"));
@@ -59,92 +56,137 @@ public class AddDrivers extends HttpServlet {
 		driver.setNIC(request.getParameter("nic"));
 		driver.setPass(request.getParameter("password"));
 		driver.setConpass(request.getParameter("confirmPassword"));
-
+		
+	/*	String fName = request.getParameter("fname"); // first name
+		String lName = request.getParameter("lname"); // last name
+		String email = request.getParameter("email"); // email
+		String NIC   = request.getParameter("nic"); // NIC
+		String mobile= request.getParameter("mobile"); // mobile number
+		String uName = request.getParameter("uname"); // user name
+		String pass  = request.getParameter("password"); // password
+		String coPass= request.getParameter("confirmPassword"); // confirm password
+	*/
 		response.setContentType("text/html");
-
-		PrintWriter write = response.getWriter();
-
-		DBManager db = new DBManager();
-		Connection conn = db.getConnection();
-
-		if (conn == null) {
-			write.write("Connection Not Established");
-		} else {
-			try {
-				Statement st = conn.createStatement();
-				String sql = "select * from driver where username = '"
-						+ driver.getuName() + "'";
-				ResultSet rs = st.executeQuery(sql);
-
-				if (rs.next()) {
-					Object message = "User is exist";
-					request.setAttribute("unameExist", message);
-					request.getRequestDispatcher("/addDrivers.jsp").forward(
-							request, response);
-					request.getRequestDispatcher("/header.jsp").forward(
-							request, response);
-				}
-			} catch (Exception e) {
-				System.out.println("Error: " + e.getMessage());
+		
+		PrintWriter write =response.getWriter();
+		
+			DBManager db=new DBManager();
+			Connection conn = db.getConnection();
+			
+			if(conn==null){
+				write.write("Connection Not Established");
 			}
-
-			if (!driver.getPass().equals(driver.getConpass())) {
-				Object message = "Password not maching";
-				request.setAttribute("passwordMatchingErr", message);
-				request.getRequestDispatcher("/addDrivers.jsp").forward(
-						request, response);
-				request.getRequestDispatcher("/header.jsp").forward(request,
-						response);
-			} else if (!driver.getEmail().matches(
-					"^[A-Z0-9a-z._%+-]+@[A-Z0-9a-z]+\\.[A-Za-z]{2,6}$")) {
-				Object message = "Use Standered email";
-				request.setAttribute("message", message);
-				request.getRequestDispatcher("/addDrivers.jsp").forward(
-						request, response);
-				request.getRequestDispatcher("/header.jsp").forward(request,
-						response);
-			} else if (!driver.getNIC().matches("^[0-9]{9}[vVxX]$")) {
-				Object message = "Invalid NIC";
-				request.setAttribute("message", message);
-				request.getRequestDispatcher("/addDrivers.jsp").forward(
-						request, response);
-				request.getRequestDispatcher("/header.jsp").forward(request,
-						response);
-			} else if (!driver.getMobile().matches("^[0-9]{10}$")) {
-				Object message = "Invalid mobile";
-				request.setAttribute("message", message);
-				request.getRequestDispatcher("/addDrivers.jsp").forward(
-						request, response);
-				request.getRequestDispatcher("/header.jsp").forward(request,
-						response);
-			} else {
-				String sql2 = "insert into driver (username,fname,lname,email,NIC,mobile,password)"
-						+ "values (?,?,?,?,?,?,?)";
-				try {
-					PreparedStatement pre = conn.prepareStatement(sql2);
-
-					pre.setString(1, driver.getuName());
-					pre.setString(2, driver.getFname());
-					pre.setString(3, driver.getLname());
-					pre.setString(4, driver.getEmail());
-					pre.setString(5, driver.getNIC());
-					pre.setString(6, driver.getMobile());
-					pre.setString(7, driver.getPass());
-
-					pre.execute();
-
-					Object message = driver.getuName() + " Registered";
-					request.setAttribute("message", message);
-					request.getRequestDispatcher("/member.jsp").forward(
-							request, response);
-					request.getRequestDispatcher("/header.jsp").forward(
-							request, response);
-				} catch (Exception e) {
-					System.out.println("Got an exception");
-					System.out.println(e.getMessage());
+			else{
+				try{
+					if(driver.getEmail().isEmpty()&&driver.getFname().isEmpty()&&driver.getLname().isEmpty()
+							&&driver.getMobile().isEmpty()&&driver.getNIC().isEmpty()&&driver.getPass().isEmpty()
+							&&driver.getPass().isEmpty()&&driver.getuName().isEmpty()&&driver.getConpass().isEmpty()){
+						Object message = "Cannot have empty feiled...Fill all";
+						request.setAttribute("emptyfill", message);
+						request.setAttribute("vfname", driver.getFname());
+						request.setAttribute("vlname", driver.getLname());
+						request.setAttribute("vemail", driver.getEmail());
+						request.setAttribute("vnic", driver.getNIC());
+						request.setAttribute("vmobile", driver.getMobile());
+						request.setAttribute("vuser", driver.getuName());
+						request.getRequestDispatcher("/addDrivers.jsp").forward(request,response);
+					}
+					Statement st = conn.createStatement();
+					String sql = "select * from driver where username = '"+driver.getuName()+"'";
+					ResultSet rs = st.executeQuery(sql);
+					
+					if(rs.next()){
+						Object message = "User is exist";
+						request.setAttribute("unameExist", message);
+						request.setAttribute("vfname", driver.getFname());
+						request.setAttribute("vlname", driver.getLname());
+						request.setAttribute("vemail", driver.getEmail());
+						request.setAttribute("vnic", driver.getNIC());
+						request.setAttribute("vmobile", driver.getMobile());
+						request.setAttribute("vuser", driver.getuName());
+						request.getRequestDispatcher("/addDrivers.jsp").forward(request,response);
+						request.getRequestDispatcher("/header.jsp").forward(request,response);
+					}
+				}
+				catch(Exception e){
+					System.out.println("Error: " + e.getMessage());
+				}
+				
+				if(!driver.getPass().equals(driver.getConpass())){
+					Object message = "Password not maching";
+					request.setAttribute("passwordMatchingErr", message);
+					request.setAttribute("vfname", driver.getFname());
+					request.setAttribute("vlname", driver.getLname());
+					request.setAttribute("vemail", driver.getEmail());
+					request.setAttribute("vnic", driver.getNIC());
+					request.setAttribute("vmobile", driver.getMobile());
+					request.setAttribute("vuser", driver.getuName());
+					request.getRequestDispatcher("/addDrivers.jsp").forward(request,response);
+					request.getRequestDispatcher("/header.jsp").forward(request,response);
+				}
+				else if(!driver.getEmail().matches("^[A-Z0-9a-z._%+-]+@[A-Z0-9a-z]+\\.[A-Za-z]{2,6}$")){
+					Object message = "Use Standered email";
+					request.setAttribute("email", message);
+					request.setAttribute("vfname", driver.getFname());
+					request.setAttribute("vlname", driver.getLname());
+					request.setAttribute("vemail", driver.getEmail());
+					request.setAttribute("vnic", driver.getNIC());
+					request.setAttribute("vmobile", driver.getMobile());
+					request.setAttribute("vuser", driver.getuName());
+					request.getRequestDispatcher("/addDrivers.jsp").forward(request,response);
+					request.getRequestDispatcher("/header.jsp").forward(request,response);
+				}
+				else if(!driver.getNIC().matches("^[0-9]{9}[vVxX]$")){
+					Object message = "Invalid NIC";
+					request.setAttribute("nic", message);
+					request.setAttribute("vfname", driver.getFname());
+					request.setAttribute("vlname", driver.getLname());
+					request.setAttribute("vemail", driver.getEmail());
+					request.setAttribute("vnic", driver.getNIC());
+					request.setAttribute("vmobile", driver.getMobile());
+					request.setAttribute("vuser", driver.getuName());
+					request.getRequestDispatcher("/addDrivers.jsp").forward(request,response);
+					request.getRequestDispatcher("/header.jsp").forward(request,response);
+				}
+				else if (!driver.getMobile().matches("^[0-9]{10}$")){
+					Object message = "Invalid mobile";
+					request.setAttribute("mobile", message);
+					request.setAttribute("vfname", driver.getFname());
+					request.setAttribute("vlname", driver.getLname());
+					request.setAttribute("vemail", driver.getEmail());
+					request.setAttribute("vnic", driver.getNIC());
+					request.setAttribute("vmobile", driver.getMobile());
+					request.setAttribute("vuser", driver.getuName());
+					request.getRequestDispatcher("/addDrivers.jsp").forward(request,response);
+					request.getRequestDispatcher("/header.jsp").forward(request,response);
+				}
+				else{
+					String sql2 = "insert into driver (username,fname,lname,email,NIC,mobile,password)"
+							+ "values (?,?,?,?,?,?,?)";
+					try{
+						PreparedStatement pre = conn.prepareStatement(sql2);
+						
+						pre.setString(1, driver.getuName());
+						pre.setString(2, driver.getFname());
+						pre.setString(3, driver.getLname());
+						pre.setString(4, driver.getEmail());
+						pre.setString(5, driver.getNIC());
+						pre.setString(6, driver.getMobile());
+						pre.setString(7, driver.getPass());
+						
+						pre.execute();
+						
+						Object message = "Successfully Registered";
+						request.setAttribute("message", message);
+						request.getRequestDispatcher("/index.jsp").forward(request, response);
+						request.getRequestDispatcher("/header.jsp").forward(request, response);
+					}
+					catch(Exception e){
+						System.out.println("Got an exception");
+						System.out.println(e.getMessage());
+					}
 				}
 			}
-		}
 
 	}
 
