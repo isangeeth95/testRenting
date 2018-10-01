@@ -12,7 +12,7 @@
 <body style="background-color: whitesmoke">
 
 	<%
-		String imageName = (String) request.getAttribute("imageName");
+		String imageName = (String) session.getAttribute("imageName");
 		String uname=(String)session.getAttribute("username");
 	%>
 
@@ -49,7 +49,7 @@
 					}
 					if (session.getAttribute("loggedAs") == "user") {
 				%>
-				<td><a href="ViewUser" />Profile</td>
+				<td><a href="userDetails" />Profile</td>
 				<%
 				}%>
 			</tr>

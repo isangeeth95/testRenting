@@ -22,16 +22,16 @@ import Login.DBManager;
  * Servlet implementation class registerImage
  */
 @WebServlet("/register")
-@MultipartConfig(fileSizeThreshold = 1024*1024*2,
-		maxFileSize = 1024*1024*10,
-		maxRequestSize = 1024*1024*50)
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, maxFileSize = 1024 * 1024 * 10, maxRequestSize = 1024 * 1024 * 50)
 public class register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		User user = new User();
 
 		user.setFname(request.getParameter("fname"));
@@ -44,18 +44,25 @@ public class register extends HttpServlet {
 		user.setUname(request.getParameter("uname"));
 		user.setPassword(request.getParameter("password"));
 		user.setConfPassword(request.getParameter("confirmPassword"));
-	
 
 		response.setContentType("text/html");
 
 		PrintWriter write = response.getWriter();
-		
-		Part part=request.getPart("image");
-		user.setImageName(user.extractImageName(part));
-		user.setPath("C:\\Users\\sangeeth\\workspaceNew\\yamudarawmak\\WebContent\\usersImages\\"+File.separator+user.getImageName());
-		File fileSaveDir=new File(user.getPath());
-		part.write(user.getPath()+File.separator);
-		
+
+		if (request.getParameter("image") != null) {
+			Part part = request.getPart("image");
+			user.setImageName(user.extractImageName(part));
+			user.setPath("C:\\Users\\sangeeth\\workspaceNew\\yamudarawmak\\WebContent\\usersImages\\"
+					+ File.separator + user.getImageName());
+			File fileSaveDir = new File(user.getPath());
+			part.write(user.getPath() + File.separator);
+		}
+
+		else
+			user.setImageName("defaultUser.png");
+			user.setPath("C:\\Users\\sangeeth\\workspaceNew\\yamudarawmak\\WebContent\\usersImages\\"
+				+ File.separator + user.getImageName());
+
 		DBManager db = new DBManager();
 		Connection conn = db.getConnection();
 
@@ -98,12 +105,12 @@ public class register extends HttpServlet {
 				}
 
 				else {
-					
+
 					String sql2 = "insert into users (fname,lname,email,gender,country,city,telNo,uname,password,imageName,path)"
 							+ "values(?,?,?,?,?,?,?,?,?,?,?)";
 
 					PreparedStatement pre = conn.prepareStatement(sql2);
-					
+
 					pre.setString(1, user.getFname());
 					pre.setString(2, user.getLname());
 					pre.setString(3, user.getEmail());
@@ -119,7 +126,7 @@ public class register extends HttpServlet {
 					pre.execute();
 
 					Object message = user.getUname();
-					String imageName=user.getImageName();
+					String imageName = user.getImageName();
 					request.setAttribute("message", message);
 					request.setAttribute("imageName", imageName);
 					request.getRequestDispatcher("/home.jsp").forward(request,
@@ -134,7 +141,7 @@ public class register extends HttpServlet {
 			}
 
 		}
-	
+
 	}
 
 }

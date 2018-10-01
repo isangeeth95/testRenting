@@ -4,6 +4,7 @@ import javax.servlet.http.Part;
 
 public class User {
 
+	private String uid;
 	private String fname; // first name
 	private String lname; // last name
 	private String email; // email
@@ -17,7 +18,14 @@ public class User {
 	private String imageName;
 	private String path;
 
+	public String getUid() {
+		return uid;
+	}
 
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
+	
 	public String getImageName() {
 		return imageName;
 	}
@@ -114,13 +122,15 @@ public class User {
 		this.path = path;
 	}
 
+	
 	@Override
 	public String toString() {
-		return "User [fname=" + fname + ", lname=" + lname + ", email=" + email
-				+ ", gender=" + gender + ", country=" + country + ", city="
-				+ city + ", telNo=" + telNo + ", uname=" + uname
-				+ ", password=" + password + ", confPassword=" + confPassword
-				+ ", imageName=" + imageName + ", path=" + path + "]";
+		return "User [uid="+uid+", fname=" + fname + ", lname=" + lname
+				+ ", email=" + email + ", gender=" + gender + ", country="
+				+ country + ", city=" + city + ", telNo=" + telNo + ", uname="
+				+ uname + ", password=" + password + ", confPassword="
+				+ confPassword + ", imageName=" + imageName + ", path=" + path
+				+ "]";
 	}
 
 	public String extractImageName(Part part){

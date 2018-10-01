@@ -1,0 +1,76 @@
+<%@page import="register.User"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="getUser.css">
+<title>User</title>
+</head>
+<%
+	if (session.getAttribute("username") == null) {
+%>
+<jsp:include page="header.jsp"></jsp:include>
+<%
+	} else {
+%>
+<jsp:include page="afterLoginHeader.jsp"></jsp:include>
+<%
+	}
+%>
+
+<body>
+	<div class="containerForUserDetails">
+		<br> <br>
+		<div  class="userDetails" align="left">
+			<table border="1" cellpadding="12">
+				<caption>
+					<h2>User Details</h2>
+				</caption>
+				<tr>
+					<th>User ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Gender</th>
+					<th>Country</th>
+					<th>City</th>
+					<th>telNo</th>
+					<th>User Name</th>
+					<th>Password</th>
+					<th>Image</th>
+				</tr>
+				<%
+					User user = (User) request.getAttribute("user");
+					session.setAttribute("uid",user.getUid());
+				%>
+				<tr>
+					<td><%=user.getUid()%></td>
+					<td><%=user.getFname()%></td>
+					<td><%=user.getLname()%></td>
+					<td><%=user.getEmail()%></td>
+					<td><%=user.getGender()%></td>
+					<td><%=user.getCountry()%></td>
+					<td><%=user.getCity()%></td>
+					<td><%=user.getTelNo()%></td>
+					<td><%=user.getUname()%></td>
+					<td><%=user.getPassword()%></td>
+					<td><img src="usersImages/<%=user.getImageName() %>" width="150"
+						height="150"></td>
+					<td>
+						<form method="POST" action="getUserServlet">
+							<input type="text" name="uid>"
+								value="<%=session.getAttribute("uid")%>" /> <input type="submit"
+								value="Select User" class="select-button" />
+						</form>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+
+	</div>
+</body>
+<%@include file="footer.jsp"%>
+</html>

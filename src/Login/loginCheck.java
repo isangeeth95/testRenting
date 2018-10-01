@@ -82,6 +82,13 @@ public class loginCheck extends HttpServlet {
 					session.setAttribute("loggedAs", "user");
 					session.setAttribute("username", dbuname);
 					session.setAttribute("password", dbpassword);
+					if(imageName!=null)
+					session.setAttribute("imageName", imageName);
+					
+					else{
+						imageName="defaultUser";
+						session.setAttribute("imageName", imageName);
+					}
 					
 					message=(String)session.getAttribute("username");
 					request.setAttribute("message", message);

@@ -133,6 +133,7 @@ a{
     transition: font-size 1s;
 }
 
+
 #nav1 td{
     padding-top: 5px;
     padding-bottom: 5px;
@@ -141,7 +142,7 @@ a{
 //background-color: mediumspringgreen;
 }
 
-#nav1 td:hover a:hover{
+#nav1 td:hover a:hover {
     background-color: mediumspringgreen;
     font-size: 25px;
     border-radius: 10px;
