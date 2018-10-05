@@ -22,35 +22,36 @@
 <body>
 	<div class="container">
 
-		<h1 style="text-align: center; font-size: 50px">Update User Information</h1>
+		<h1 style="text-align: center; font-size: 50px">Update User
+			Information</h1>
 		<br> <br>
 		<%
 		User user=(User)request.getAttribute("user");
 	%>
-	
+
 		<div class="form">
 			<form action="updateUserServlet" method="post">
 				<table class="table">
-					
+
 					<tr>
 						<td>User ID</td>
-						<td><input id="input" type="text"
-							value="<%=user.getUid() %>" name="uid" disabled="disabled"></td>
-					</tr>	
+						<td><input id="input" type="text" value='<%=user.getUid() %>'
+							name="uid" disabled="disabled"></td>
+					</tr>
 					<tr>
 						<td>First Name</td>
 						<td><input id="input" type="text"
-							value="<%=user.getFname() %>" name="fname"></td>
+							value='<%=user.getFname() %>' name="fname"></td>
 					</tr>
 					<tr>
 						<td>Last Name</td>
 						<td><input id="input" type="text"
-							value="<%=user.getLname() %>" name="lname"></td>
+							value='<%=user.getLname() %>' name="lname"></td>
 					</tr>
 					<tr>
 						<td>E mail</td>
 						<td><input id="input" type="text"
-							value="<%=user.getEmail() %>" name="email"></td>
+							value='<%=user.getEmail() %>' name="email"></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -65,23 +66,23 @@
 					</tr>
 					<tr>
 						<td>Country</td>
-						<td><input id="input" type="text" value="<%=user.getCountry() %>"
-							name="country"></td>
+						<td><input id="input" type="text"
+							value='<%=user.getCountry() %>' name="country"></td>
 					</tr>
 					<tr>
 						<td>City</td>
-						<td><input id="input" type="text" value="<%=user.getCity() %>"
-							name="city"></td>
+						<td><input id="input" type="text"
+							value='<%=user.getCity() %>' name="city"></td>
 					</tr>
 					<tr>
 						<td>Mobile</td>
 						<td><input id="input" type="text"
-							value="<%=user.getTelNo() %>" name="telNo"></td>
+							value='<%=user.getTelNo() %>' name="telNo"></td>
 					</tr>
 					<tr>
 						<td>User name</td>
 						<td><input id="input" type="text"
-							value="<%=user.getUname() %>" name="uname"></td>
+							value='<%=user.getUname() %>' name="uname"></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -90,13 +91,12 @@
 					<tr>
 						<td>Password</td>
 						<td><input id="input" type="text"
-							value="<%=user.getPassword() %>" name="password"></td>
+							value='<%=user.getPassword() %>' name="password"></td>
 					</tr>
 					<tr>
 						<td>Confirm password</td>
-						<td><input id="input" type="password" value="<%=user.getPassword()%>"
-							name="confirmPassword"
-							required></td>
+						<td><input id="input" type="password"
+							value='<%=user.getPassword() %>' name="confirmPassword" required></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -112,21 +112,24 @@
 
 		<h1 style="font-size: 40px; color: red;">${insertUnsuccess}</h1>
 
-		<table>
-			<tr>
-				<td colspan="2">
-					<form method="POST" action="DeleteEmployeeServlet">
-						<input type="hidden" name="employeeID"
-							value="<%=user.getUid() %>" /> <input type="submit"
-							value="Delete Employee" class="delete-button" />
-					</form>
-				</td>
-			</tr>
-		</table>
-
-
-
-
+		<div class="form">
+		<div class="table">
+		<button id="dButton" onclick="myFunction()">Delete User</button>
+		<script>
+		function myFunction() {
+		    if (confirm("THINK TWICE ! If you pressed \"ok\" your user account will be deleted permanently..")) {
+    			window.location.href = "deleteUserServlet";
+    		} else {
+    			window.location.href = "home.jsp";
+    		}
+		}
+		</script>
+		</div>
+		</div>
+		
+		<br>
+		<br>
+		
 
 
 	</div>

@@ -45,6 +45,8 @@
 
 		</div>
 
+		<hr>
+
 		<h1>YOUR CHOICE</h1>
 
 		<div class="packagesBlock">
@@ -64,6 +66,8 @@
 				<h2>WEDDINGS</h2>
 			</div>
 		</div>
+
+		<hr>
 
 		<div class="quote-box">
 			<blockquote>

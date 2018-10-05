@@ -82,12 +82,27 @@ public class updateUserServlet extends HttpServlet {
 						+ user.getUname() + "' or email = '" + user.getEmail()
 						+ "') and uid<>'" + user.getUid() + "'";
 				ResultSet rs = st.executeQuery(sql);
+				
+				Statement st2 = conn.createStatement();
+				String sql2 = "select * from admins where uname = '"
+						+ user.getUname() + "' or email = '" + user.getEmail()
+						+ "'";
+				ResultSet rs2 = st2.executeQuery(sql2);
 
 				if (rs.next()) {
 					Object message = "Username or Email exist";
 					request.setAttribute("unameExist", message);
 					request.getRequestDispatcher("/getUserForUpdate.jsp")
 							.forward(request, response);
+				}
+				
+				else if (rs2.next()) {
+					Object message = "Username or Email exist";
+					request.setAttribute("unameExist", message);
+					request.getRequestDispatcher("/register.jsp").forward(
+							request, response);
+					request.getRequestDispatcher("/header.jsp").forward(
+							request, response);
 				}
 
 				else if (!user.getPassword().equals(user.getConfPassword())) {
@@ -107,7 +122,7 @@ public class updateUserServlet extends HttpServlet {
 
 				else {
 
-					String sql2 = "update users set " + "fname='"
+					String sql3 = "update users set " + "fname='"
 							+ user.getFname() + "'," + "lname='"
 							+ user.getLname() + "'," + "email='"
 							+ user.getEmail() + "'," + "gender='"
@@ -120,19 +135,14 @@ public class updateUserServlet extends HttpServlet {
 							+ user.getUid() + "'";
 
 					Statement st1=conn.createStatement();
-					st1.executeUpdate(sql2);
-
+					st1.executeUpdate(sql3);
+					
 					session.setAttribute("loggedAs", "user");
+					session.setAttribute("uid", user.getUid());
 					session.setAttribute("username", user.getUname());
 					session.setAttribute("password", user.getPassword());
 
-					String message = (String) session.getAttribute("username");
-					request.setAttribute("message", message);
-
-					request.getRequestDispatcher("/home.jsp").forward(request,
-							response);
-					request.getRequestDispatcher("/afterLoginHeader.jsp")
-							.forward(request, response);
+					request.getRequestDispatcher("/home.jsp").forward(request,response);
 				}
 			} catch (Exception e) {
 				System.out.println("Got an exception");

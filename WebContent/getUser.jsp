@@ -44,7 +44,7 @@
 				</tr>
 				<%
 					User user = (User) request.getAttribute("user");
-					session.setAttribute("uid",user.getUid());
+					
 				%>
 				<tr>
 					<td><%=user.getUid()%></td>

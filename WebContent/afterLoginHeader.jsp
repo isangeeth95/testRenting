@@ -24,8 +24,20 @@
 			<table>
 				<tr>
 					<td><h1><%=uname%></h1></td>
+					<%
+					if ((session.getAttribute("loggedAs") == "driver")||(session.getAttribute("loggedAs") == "user")) {
+					%>
 					<td><img src="usersImages/<%=imageName%>" width="100"
 						height="100"></td>
+					<%
+					}
+					if (session.getAttribute("loggedAs") == "admin") {
+						%>
+					<td><img src="adminImages/<%=imageName%>" width="100"
+						height="100"></td>
+					<%
+							}
+					%>
 				</tr>
 			</table>
 			<li><a href="logoutCheck">Logout</a></li>
@@ -50,6 +62,11 @@
 					if (session.getAttribute("loggedAs") == "user") {
 				%>
 				<td><a href="userDetails" />Profile</td>
+				<%
+					}
+					if (session.getAttribute("loggedAs") == "admin") {
+				%>
+				<td><a href="adminProfile.jsp" />Admin Profile</td>
 				<%
 				}%>
 			</tr>

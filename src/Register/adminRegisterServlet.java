@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,19 +20,31 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import Login.DBManager;
 
 /**
- * Servlet implementation class registerImage
+ * Servlet implementation class adminRegisterServlet
  */
-@WebServlet("/register")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, maxFileSize = 1024 * 1024 * 10, maxRequestSize = 1024 * 1024 * 50)
-public class register extends HttpServlet {
+@WebServlet("/adminRegisterServlet")
+public class adminRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public adminRegisterServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = new User();
 
 		user.setFname(request.getParameter("fname"));
@@ -74,27 +85,21 @@ public class register extends HttpServlet {
 				if (rs.next()) {
 					Object message = "Username or Email exist";
 					request.setAttribute("unameExist", message);
-					request.getRequestDispatcher("/register.jsp").forward(
-							request, response);
-					request.getRequestDispatcher("/header.jsp").forward(
+					request.getRequestDispatcher("/adminRegisterForm.jsp").forward(
 							request, response);
 				}
 				
 				else if (rs2.next()) {
 					Object message = "Username or Email exist";
 					request.setAttribute("unameExist", message);
-					request.getRequestDispatcher("/register.jsp").forward(
-							request, response);
-					request.getRequestDispatcher("/header.jsp").forward(
+					request.getRequestDispatcher("/adminRegisterForm.jsp").forward(
 							request, response);
 				}
-
+				
 				else if (!user.getPassword().equals(user.getConfPassword())) {
 					Object message = "Password not matching";
 					request.setAttribute("passwordMatchingErr", message);
-					request.getRequestDispatcher("/register.jsp").forward(
-							request, response);
-					request.getRequestDispatcher("/header.jsp").forward(
+					request.getRequestDispatcher("/adminRegisterForm.jsp").forward(
 							request, response);
 				}
 
@@ -102,15 +107,13 @@ public class register extends HttpServlet {
 						"^[A-Z0-9a-z._%+-]+@[A-Z0-9a-z]+\\.[A-Za-z]{2,6}$")) {
 					Object message = "Use Standered email";
 					request.setAttribute("emailErr", message);
-					request.getRequestDispatcher("/register.jsp").forward(
-							request, response);
-					request.getRequestDispatcher("/header.jsp").forward(
+					request.getRequestDispatcher("/adminRegisterForm.jsp").forward(
 							request, response);
 				}
 
 				else {
 
-					String sql3 = "insert into users (fname,lname,email,gender,country,city,telNo,uname,password,imageName,path)"
+					String sql3 = "insert into admins (fname,lname,email,gender,country,city,telNo,uname,password,imageName,path)"
 							+ "values(?,?,?,?,?,?,?,?,?,?,?)";
 
 					PreparedStatement pre = conn.prepareStatement(sql3);
@@ -129,7 +132,7 @@ public class register extends HttpServlet {
 					if (ServletFileUpload.isMultipartContent(request)) {
 						Part part = request.getPart("image");
 						user.setImageName(user.extractImageName(part));
-						user.setPath("C:\\Users\\sangeeth\\workspaceNew\\yamudarawmak\\WebContent\\usersImages\\"
+						user.setPath("C:\\Users\\sangeeth\\workspaceNew\\yamudarawmak\\WebContent\\adminImages\\"
 								+ File.separator + user.getImageName());
 						File fileSaveDir = new File(user.getPath());
 						part.write(user.getPath() + File.separator);
@@ -140,20 +143,22 @@ public class register extends HttpServlet {
 					
 					pre.execute();
 
-					Object message = user.getUname();
-					String imageName = user.getImageName();
-					request.setAttribute("message", message);
-					request.setAttribute("imageName", imageName);
-					request.getRequestDispatcher("/home.jsp").forward(request,
+//					Object message = user.getUname();
+//					String imageName = user.getImageName();
+//					request.setAttribute("message", message);
+//					request.setAttribute("imageName", imageName);
+					request.getRequestDispatcher("/adminProfile.jsp").forward(request,
 							response);
-					request.getRequestDispatcher("/header.jsp").forward(
-							request, response);
 
 				}
+				out.println("<h1>ConnectionEstablished</h1>"+user.getFname()+" "+user.getConfPassword());
+				
 			} catch (Exception e) {
 				System.out.println("Got an exception");
 				System.out.println(e.getMessage());
+				System.out.println("<h1>ConnectionEstablished</h1>"+request.getParameter("fname1")+" "+user.getConfPassword());
 			}
 		}	
 	}
+
 }
