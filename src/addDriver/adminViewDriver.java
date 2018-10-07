@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,8 +37,12 @@ public class adminViewDriver extends HttpServlet {
 		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
 		String uName = request.getParameter("uname");
+		RequestDispatcher rd = request.getRequestDispatcher("/header.jsp");
+		rd.include(request, response);
+		out.print("<body>");
+		out.print("<div class=\"container\" align='center' style='background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);'>");
 		out.print("<h1>Display the records of Drivers for Admin</h1>");
-		out.print("<table border='1'><tr><th>User Name</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Mobile</th><th>NIC</th></tr>");
+		out.print("<table border='1'style='color:blue;background-color: powderblue;width:60%;'><tr style='color:red;font-size: 30px;'><th style='padding:15px;'>User Name</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Mobile</th><th>NIC</th></tr>");
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(
@@ -48,7 +53,7 @@ public class adminViewDriver extends HttpServlet {
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(((ResultSet) rs).next()){
-				out.print("<tr><td>");
+				out.print("<tr style='font-size: 30px;text-align: center;'><td style=' padding:7px;'>");
 				out.println(((ResultSet) rs).getString(1));
 				out.print("</td>");
 				out.print("<td>");
@@ -67,8 +72,10 @@ public class adminViewDriver extends HttpServlet {
 				out.print(((ResultSet) rs).getString(6));
 				out.print("</td>");
 				out.print("</tr>");
-				out.print("<th><form action><input type='submit' value='delete driver'></form></th>");
-				out.print("<th><form action><input type='submit' value='disable driver'></form></th>");
+				out.print("<th><form action style='margin-top:5px;padding:5px;'><input type='submit' value='delete driver' style='padding:5px;background:#4CAF50;"
+				+ "transition-duration: 0.4s;display: inline-block;cursor: pointer;-webkit-transition-duration: 0.4s;color:white;font-size:20px;font-weight:bold;border: none;'></form></th>");
+				out.print("<th><form action style='margin-top:5px;padding:5px;'><input type='submit' value='disable driver' style='padding:5px;background:#4CAF50;"
+				+ "transition-duration: 0.4s;display: inline-block;cursor: pointer;-webkit-transition-duration: 0.4s;color:white;font-size:20px;font-weight:bold;border: none;'></form></th>");
 			}
 		
 		}
@@ -76,7 +83,10 @@ public class adminViewDriver extends HttpServlet {
 			System.out.println(p);
 		}
 		out.print("</table>");
-		
+		out.print("</div>");
+		out.print("</body>");
+		RequestDispatcher rd2 = request.getRequestDispatcher("/footer.jsp");
+		rd2.include(request, response);
 	}
 
 	/**
