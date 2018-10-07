@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import addDriver.Driver;
 import Login.DBManager;
 
 /**
@@ -42,8 +43,11 @@ public class UpdateDriver extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		Driver driver = new Driver();
+		
 		PrintWriter out = response.getWriter();
-		RequestDispatcher rd = request.getRequestDispatcher("/header.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/afterLoginHeader.jsp");
 		rd.include(request, response);
 		
 		String fName = request.getParameter("fname"); // first name
@@ -81,9 +85,16 @@ public class UpdateDriver extends HttpServlet {
 				}
 				
 				try{
-					String UserName = (String) session.getAttribute("username");
+					driver.setuName((String) session.getAttribute("username"));
+					driver.setFname((String) session.getAttribute("fname"));
+					driver.setLname((String) session.getAttribute("lname"));
+					driver.setEmail((String) session.getAttribute("email"));
+					driver.setNIC((String) session.getAttribute("NIC"));
+					driver.setMobile((String) session.getAttribute("mobile"));
+					driver.setPass((String) session.getAttribute("password"));
+					
 					String sql2 = "update driver set username = ? ,fname = ? ,lname = ? ,email = ? ,NIC = ? ,mobile = ? ,password = ?"
-							+ "where username = '"+UserName+"'";
+							+ "where username = '"+driver.getuName()+"'";
 					
 					
 					PreparedStatement pre = conn.prepareStatement(sql2);
