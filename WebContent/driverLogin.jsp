@@ -7,6 +7,9 @@
 <link rel="stylesheet" type="text/css" href="login.css">
 <title>Driver Login</title>
 <%@include file="header.jsp"%>
+<style type="text/css">
+input { font-size: 26px;text-align: center; }
+</style>
 </head>
 <body>
 	<div class="container">

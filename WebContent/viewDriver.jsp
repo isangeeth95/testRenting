@@ -29,7 +29,7 @@ if(session.getAttribute("username")==null) {
 					if (session.getAttribute("username") != null) {
 						String fname = (String) session.getAttribute("fname");
 						String lname = (String) session.getAttribute("lname");
-						out.print("Hello " + fname + " " + lname + " Welcome ");
+						out.print("Hello Welcome ");
 					} else {
 						response.sendRedirect("driverLogin.jsp");
 					}
