@@ -18,7 +18,7 @@ import javax.servlet.http.Part;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
-import register.User;
+import Register.User;
 import Login.DBManager;
 
 /**

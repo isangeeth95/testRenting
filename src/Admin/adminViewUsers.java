@@ -7,11 +7,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Login.DBManager;
 
@@ -35,7 +37,12 @@ public class adminViewUsers extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		String uName = request.getParameter("uname");
+		
+		HttpSession session = request.getSession();
+		RequestDispatcher rd = request.getRequestDispatcher("/afterLoginHeader.jsp");
+		rd.include(request, response);
+		out.print("<body>");
+		out.print("<div class=\"container\" align='center' style='background-image: linear-gradient(to top, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%);margin-bottom: -200px;'>");
 		out.print("<h1>Display the records of Users for Admin</h1>");
 		out.print("<table border='1'><tr>"+
 					"<th>User ID</th>"+
@@ -101,10 +108,11 @@ public class adminViewUsers extends HttpServlet {
 				out.print("<img src=\"usersImages/"+((ResultSet) rs).getString(11)+"\" width=\"150\" height=\"150\">");
 				out.print("</td>");
 				out.print("</tr>");
-				out.print("<th><form action><input type='submit' value='delete driver'></form></th>");
-				out.print("<th><form action><input type='submit' value='disable driver'></form></th>");
+				out.print("<th><button onclick=\"window.location.href='adminDeleteUser.jsp'\">Delete User</button></th>");
+				//out.print("<th><form action=\"adminDeleteUser\"><input type='submit' value='delete user'></form></th>");
+				out.print("<th><form action><input type='submit' value='disable user'></form></th>");
+				
 			}
-		
 		}
 		catch(Exception p){
 			System.out.println(p);

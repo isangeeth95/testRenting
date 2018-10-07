@@ -1,4 +1,4 @@
-package register;
+package Register;
 
 import java.io.File;
 import java.io.IOException;
@@ -76,16 +76,12 @@ public class register extends HttpServlet {
 					request.setAttribute("unameExist", message);
 					request.getRequestDispatcher("/register.jsp").forward(
 							request, response);
-					request.getRequestDispatcher("/header.jsp").forward(
-							request, response);
 				}
 				
 				else if (rs2.next()) {
 					Object message = "Username or Email exist";
 					request.setAttribute("unameExist", message);
 					request.getRequestDispatcher("/register.jsp").forward(
-							request, response);
-					request.getRequestDispatcher("/header.jsp").forward(
 							request, response);
 				}
 
@@ -94,8 +90,6 @@ public class register extends HttpServlet {
 					request.setAttribute("passwordMatchingErr", message);
 					request.getRequestDispatcher("/register.jsp").forward(
 							request, response);
-					request.getRequestDispatcher("/header.jsp").forward(
-							request, response);
 				}
 
 				else if (!user.getEmail().matches(
@@ -103,8 +97,6 @@ public class register extends HttpServlet {
 					Object message = "Use Standered email";
 					request.setAttribute("emailErr", message);
 					request.getRequestDispatcher("/register.jsp").forward(
-							request, response);
-					request.getRequestDispatcher("/header.jsp").forward(
 							request, response);
 				}
 
@@ -139,16 +131,9 @@ public class register extends HttpServlet {
 					}
 					
 					pre.execute();
-
-					Object message = user.getUname();
-					String imageName = user.getImageName();
-					request.setAttribute("message", message);
-					request.setAttribute("imageName", imageName);
+					
 					request.getRequestDispatcher("/home.jsp").forward(request,
 							response);
-					request.getRequestDispatcher("/header.jsp").forward(
-							request, response);
-
 				}
 			} catch (Exception e) {
 				System.out.println("Got an exception");

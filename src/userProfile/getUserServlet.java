@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Login.DBManager;
-import register.User;
+import Register.User;
 
 
 /**

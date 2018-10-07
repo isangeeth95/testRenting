@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-import register.User;
+import Register.User;
 import Login.DBManager;
 
 /**
@@ -92,23 +92,26 @@ public class updateUserServlet extends HttpServlet {
 				if (rs.next()) {
 					Object message = "Username or Email exist";
 					request.setAttribute("unameExist", message);
-					request.getRequestDispatcher("/getUserForUpdate.jsp")
+					request.getRequestDispatcher("//getUserServlet")
 							.forward(request, response);
+					
+//					out.println("<script>");
+//					out.println("function myFunction() {");
+//					out.println("alert(\"I am an alert box!\");}");
+//					out.println("</script>");
 				}
 				
 				else if (rs2.next()) {
 					Object message = "Username or Email exist";
 					request.setAttribute("unameExist", message);
-					request.getRequestDispatcher("/register.jsp").forward(
-							request, response);
-					request.getRequestDispatcher("/header.jsp").forward(
-							request, response);
+					request.getRequestDispatcher("/getUserServlet").forward(
+							request, response);					
 				}
 
 				else if (!user.getPassword().equals(user.getConfPassword())) {
 					Object message = "Password not maching";
 					request.setAttribute("passwordMatchingErr", message);
-					request.getRequestDispatcher("/getUserForUpdate.jsp")
+					request.getRequestDispatcher("/getUserServlet")
 							.forward(request, response);
 				}
 
@@ -116,7 +119,7 @@ public class updateUserServlet extends HttpServlet {
 						"^[A-Z0-9a-z._%+-]+@[A-Z0-9a-z]+\\.[A-Za-z]{2,6}$")) {
 					Object message = "Use Standered email";
 					request.setAttribute("emailErr", message);
-					request.getRequestDispatcher("/getUserForUpdate.jsp")
+					request.getRequestDispatcher("/getUserServlet")
 							.forward(request, response);
 				}
 
