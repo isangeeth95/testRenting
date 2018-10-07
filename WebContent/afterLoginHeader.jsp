@@ -13,6 +13,8 @@
 
 	<%
 		String imageName = (String) session.getAttribute("imageName");
+		if(imageName==null)
+			imageName="defaultUser.png"
 		String uname=(String)session.getAttribute("username");
 	%>
 
