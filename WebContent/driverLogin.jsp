@@ -12,9 +12,9 @@ input { font-size: 26px;text-align: center; }
 </style>
 </head>
 <body>
-	<div class="container">
-		<div class="form">
-			<form action="DriverLoginCheck" method="post">
+	<div class="container" style="background-image: linear-gradient(to top, #e8198b 0%, #c7eafd 100%);">
+		<div class="form" style="margin-top:200px;">
+			<form action="DriverLoginCheck" method="post" style="margin-top:20px;">
 				<table align="center">
 					<tr>
 						<td>User name</td>
