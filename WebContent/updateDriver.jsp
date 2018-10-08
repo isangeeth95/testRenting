@@ -55,7 +55,7 @@
 		}
 		String username = (String) session.getAttribute("username");
 		Statement stmt = con.createStatement();
-		String sql = "select username,fname,lname,email,NIC,mobile from driver where username = '"+username+"'";
+		String sql = "select username,fname,lname,email,NIC,mobile,password from driver where username = '"+username+"'";
 		ResultSet rs = stmt.executeQuery(sql);
 		
 		while(rs.next()){
@@ -71,6 +71,8 @@
 			driver.setNIC(rs.getString(5));
 
 			driver.setMobile(rs.getString(6));
+			
+			driver.setPass(rs.getString(7));
 
 		}
 		%>
