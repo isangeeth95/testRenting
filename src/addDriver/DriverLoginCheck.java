@@ -46,7 +46,7 @@ public class DriverLoginCheck extends HttpServlet {
 		String uname = request.getParameter("uname").trim();
 		String password = request.getParameter("password").trim();
 		String dbuname = null,dbpassword=null,dbfname=null,dblname=null
-				,dbemail=null,dbmobile=null,dbNIC=null;
+				,dbemail=null,dbmobile=null,dbNIC=null,dbImage=null;
 
 		response.setContentType("text/html");
 		PrintWriter write=response.getWriter();
@@ -61,7 +61,7 @@ public class DriverLoginCheck extends HttpServlet {
 			write.write("Connection Established");
 
 			String message=null;
-			String sql = "select username,fname,lname,email,mobile,NIC,password from driver where username = '"+uname+"'";
+			String sql = "select username,fname,lname,email,mobile,NIC,password,image from driver where username = '"+uname+"'";
 			
 				
 			try {
@@ -77,6 +77,7 @@ public class DriverLoginCheck extends HttpServlet {
 					dbmobile=(rs.getString(5));
 					dbNIC=(rs.getString(6));
 					dbpassword=(rs.getString(7));
+					dbImage=(rs.getString(8));
 					count += 1;
 				}
 
@@ -84,8 +85,8 @@ public class DriverLoginCheck extends HttpServlet {
 					
 					HttpSession session = request.getSession();
 					
-					session.setAttribute("loggedAs", "driver");
 					session.setAttribute("username", dbuname);
+					session.setAttribute("loggedAs", "driver");
 					session.setAttribute("fname", dbfname);
 					session.setAttribute("lname", dblname);
 					session.setAttribute("email", dbemail);
@@ -93,10 +94,18 @@ public class DriverLoginCheck extends HttpServlet {
 					session.setAttribute("mobile", dbmobile);
 					session.setAttribute("password", dbpassword);
 					
-					message="Welcome "+session.getAttribute("username");
+					if (dbImage != null)
+						session.setAttribute("imageName", dbImage);
+
+					else {
+						dbImage = "defaultUser";
+						session.setAttribute("imageName", dbImage);
+					}
+					
+					message="Welcome "+uname;
 					request.setAttribute("message", message);
 					request.getRequestDispatcher("viewDriver.jsp").forward(request,response);
-					request.getRequestDispatcher("afterLoginHeader.jsp").forward(request,response);
+					request.getRequestDispatcher("/header.jsp").forward(request,response);
 					
 				}
 

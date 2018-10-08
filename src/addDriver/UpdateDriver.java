@@ -46,7 +46,6 @@ public class UpdateDriver extends HttpServlet {
 		
 		Driver driver = new Driver();
 		
-		PrintWriter out = response.getWriter();
 		RequestDispatcher rd = request.getRequestDispatcher("/afterLoginHeader.jsp");
 		rd.include(request, response);
 		
@@ -72,8 +71,8 @@ public class UpdateDriver extends HttpServlet {
 				HttpSession session = request.getSession();
 				if(session != null){
 					if(session.getAttribute("username")!= null){
-						String name = (String) session.getAttribute("username");
-						String password = (String)session.getAttribute("password");
+						String sname = (String) session.getAttribute("username");
+						String spassword = (String)session.getAttribute("password");
 					/*	Object message = "Welcome " + name;
 						request.setAttribute("message", message);
 						request.getRequestDispatcher("/index.jsp").forward(request, response);
