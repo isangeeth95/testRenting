@@ -21,7 +21,7 @@ input { font-size: 26px;text-align: center; }
 						<td><input type="text" name="uname" required></td>
 					</tr>
 					<tr>
-						<td>User Password</td>
+						<td>Password</td>
 						<td><input type="password" name="password" required></td>
 					</tr>
 					<tr>

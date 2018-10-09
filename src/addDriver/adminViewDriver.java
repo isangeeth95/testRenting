@@ -37,7 +37,9 @@ public class adminViewDriver extends HttpServlet {
 		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
 		String uName = request.getParameter("uname");
-		RequestDispatcher rd = request.getRequestDispatcher("/header.jsp");
+		out.print("<title>View Drivers");
+		out.print("</title>");
+		RequestDispatcher rd = request.getRequestDispatcher("/afterLoginHeader.jsp");
 		rd.include(request, response);
 		out.print("<body>");
 		out.print("<div class=\"container\" align='center' style='background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);'>");

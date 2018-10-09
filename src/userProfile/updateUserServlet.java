@@ -92,7 +92,7 @@ public class updateUserServlet extends HttpServlet {
 				if (rs.next()) {
 					Object message = "Username or Email exist";
 					request.setAttribute("unameExist", message);
-					request.getRequestDispatcher("//getUserServlet")
+					request.getRequestDispatcher("/getUserServlet")
 							.forward(request, response);
 					
 //					out.println("<script>");

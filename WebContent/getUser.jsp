@@ -25,8 +25,12 @@
 		<br> <br>
 		<div  class="userDetails" align="left">
 			<table border="1" cellpadding="12">
+			<%
+					User user = (User) request.getAttribute("user");
+					
+				%>
 				<caption>
-					<h2>User Details</h2>
+					<h2>Details of <%=user.getFname()%> <%=user.getLname()%></h2>
 				</caption>
 				<tr>
 					<th>User ID</th>
@@ -42,10 +46,7 @@
 					<th>Image</th>
 					<th>Options</th>
 				</tr>
-				<%
-					User user = (User) request.getAttribute("user");
-					
-				%>
+				
 				<tr>
 					<td><%=user.getUid()%></td>
 					<td><%=user.getFname()%></td>

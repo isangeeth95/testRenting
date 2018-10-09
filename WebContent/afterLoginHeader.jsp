@@ -68,7 +68,7 @@
 					}
 					if (session.getAttribute("loggedAs") == "admin") {
 				%>
-				<td><a href="adminProfile.jsp" />Admin Profile</td>
+				<td><a href="adminDetails" />Admin Profile</td>
 				<%
 				}%>
 			</tr>

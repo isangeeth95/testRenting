@@ -39,6 +39,8 @@ public class adminViewUsers extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		HttpSession session = request.getSession();
+		out.print("<title>View Users");
+		out.print("</title>");
 		RequestDispatcher rd = request.getRequestDispatcher("/afterLoginHeader.jsp");
 		rd.include(request, response);
 		out.print("<body>");
@@ -110,7 +112,7 @@ public class adminViewUsers extends HttpServlet {
 				out.print("</tr>");
 				out.print("<th><button onclick=\"window.location.href='adminDeleteUser.jsp'\">Delete User</button></th>");
 				//out.print("<th><form action=\"adminDeleteUser\"><input type='submit' value='delete user'></form></th>");
-				out.print("<th><form action><input type='submit' value='disable user'></form></th>");
+				//out.print("<th><form action><input type='submit' value='disable user'></form></th>");
 				
 			}
 		}
