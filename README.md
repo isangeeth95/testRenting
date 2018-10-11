@@ -58,9 +58,28 @@ mobile int(11),
 password varchar(50) not null
 );
 
+ALTER TABLE driver ADD image VARCHAR(1000) ;
+ALTER TABLE driver ADD path VARCHAR(1000) ;
 
+# create table for driver requests
 
+CREATE TABLE `driverrequest` (
+  `username` varchar(50) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `reason` varchar(450) NOT NULL,
+  PRIMARY KEY (`username`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  CONSTRAINT `username` FOREIGN KEY (`username`) REFERENCES `driver` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
+# create trigger to delete driver
+
+DELIMITER $$
+CREATE TRIGGER T1 BEFOR DELETE
+ON test1.driver
+FOR EACH ROW BEGIN
+DELETE FROM driverrequest ;
+END $$
 
 
 
