@@ -37,8 +37,6 @@ public class adminViewDriver extends HttpServlet {
 		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
 		String uName = request.getParameter("uname");
-		out.print("<title>View Drivers");
-		out.print("</title>");
 		RequestDispatcher rd = request.getRequestDispatcher("/afterLoginHeader.jsp");
 		rd.include(request, response);
 		out.print("<body>");
@@ -74,17 +72,20 @@ public class adminViewDriver extends HttpServlet {
 				out.print(((ResultSet) rs).getString(6));
 				out.print("</td>");
 				out.print("</tr>");
-				out.print("<th><form action style='margin-top:5px;padding:5px;'><input type='submit' value='delete driver' style='padding:5px;background:#4CAF50;"
-				+ "transition-duration: 0.4s;display: inline-block;cursor: pointer;-webkit-transition-duration: 0.4s;color:white;font-size:20px;font-weight:bold;border: none;'></form></th>");
-				out.print("<th><form action style='margin-top:5px;padding:5px;'><input type='submit' value='disable driver' style='padding:5px;background:#4CAF50;"
-				+ "transition-duration: 0.4s;display: inline-block;cursor: pointer;-webkit-transition-duration: 0.4s;color:white;font-size:20px;font-weight:bold;border: none;'></form></th>");
 			}
+				out.print("<th><form action style='margin-top:5px;padding:5px;'><input type='button' onclick=\"window.location.href='adminDeleteDriver.jsp'\" value='delete driver' style='padding:5px;background:#4CAF50;"
+				+ "transition-duration: 0.4s;display: inline-block;cursor: pointer;-webkit-transition-duration: 0.4s;color:white;font-size:20px;font-weight:bold;border: none;'></form></th>");
+				out.print("<th><form action style='margin-top:5px;padding:5px;'><input type='submit' action='' method='get' value='disable driver' style='padding:5px;background:#4CAF50;"
+				+ "transition-duration: 0.4s;display: inline-block;cursor: pointer;-webkit-transition-duration: 0.4s;color:white;font-size:20px;font-weight:bold;border: none;'></form></th>");
+			
 		
 		}
 		catch(Exception p){
 			System.out.println(p);
 		}
+		
 		out.print("</table>");
+		out.print("<form action='driverRequest.jsp' style='padding: 10px;'><input type='submit' value='Click to see driver request' style='width: 20%;padding: 10px;font-size:30px;'><form>");
 		out.print("</div>");
 		out.print("</body>");
 		RequestDispatcher rd2 = request.getRequestDispatcher("/footer.jsp");
