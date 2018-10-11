@@ -104,7 +104,7 @@
 		<td><input type="button" id="dButton" onclick="myFunction()" value="DELETE YOUR ACOOUNT" style="width: 100%;padding: 5px; font-size: 25px;"></td>
 				<script>
 		function myFunction() {
-		    if (confirm("THINK TWICE ! If you pressed \"ok\" Your request will get by the Administrator and he will delete your account..")) {
+		    if (confirm("YOU CANNOT DELETE YOUR ACCOUNT YOURSELF !!! Please click /OK/ to get a request form..and there you can request to admin...")) {
     			window.location.href = "deleteDriverRequest.jsp";
     		} else {
     			window.location.href = "viewDriver.jsp";
