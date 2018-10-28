@@ -1,4 +1,4 @@
-#Session attributes
+# Session attributes
 
 session.setAttribute("loggedAs", "user");
 session.setAttribute("uid", dbUid);
@@ -7,10 +7,11 @@ session.setAttribute("password", dbpassword);
 session.setAttribute("imageName", imageName);
 
 
-# yamudarawmak databse table queries
+# create yamudarawmak databse 
 
 create database test1;
 
+# create admin table
 
 create table admins(
 adminId int(11) primary key auto_increment,
@@ -29,7 +30,11 @@ path varchar(255)
 
 ALTER TABLE admins AUTO_INCREMENT=1;
 
+# insert fisrt admin to admin table
+
 insert into admins (fname,lname,email,gender,country,city,telNo,uname,password,imageName,path) values("sangeeth","sankalpa","sangeeth","male","SL","madampe","+94775240944","admin1","111","","");
+
+# create user table
 
 create table users(
 uid int(11) primary key auto_increment,
@@ -47,6 +52,8 @@ path varchar(255)
 );
 
 ALTER TABLE users AUTO_INCREMENT=1;
+
+# create driver table
 
 create table driver(
 username varchar(50) primary key,
