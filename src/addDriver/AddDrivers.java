@@ -173,7 +173,7 @@ public class AddDrivers extends HttpServlet {
 						if (ServletFileUpload.isMultipartContent(request)) {
 							Part part = request.getPart("image");
 							driver.setImageName(driver.extractImageName(part));
-							driver.setPath("C:\\Users\\Chathurindu\\Desktop\\Eclipse-Pro\\javaProject\\yamudarawmak\\yamudarawmak-master\\WebContent\\usersImages"
+							driver.setPath("C:\\Users\\sangeeth\\workspaceNew\\yamudarawmak\\WebContent\\driversImages"
 									+ File.separator + driver.getImageName());
 							File fileSaveDir = new File(driver.getPath());
 							part.write(driver.getPath() + File.separator);

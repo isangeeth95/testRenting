@@ -39,11 +39,14 @@ public class adminViewUsers extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		HttpSession session = request.getSession();
+		out.print("<title>View Users");
+		out.print("</title>");
 		RequestDispatcher rd = request.getRequestDispatcher("/afterLoginHeader.jsp");
 		rd.include(request, response);
 		out.print("<body>");
-		out.print("<div class=\"container\" align='center' style='background-image: linear-gradient(to top, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%);margin-bottom: -200px;'>");
+		out.print("<div class=\"container\" align='center' style='background-image: linear-gradient(-90deg,Darkblue,aqua)'>");
 		out.print("<h1>Display the records of Users for Admin</h1>");
+		//out.print("<div  class=\"Details\">");
 		out.print("<table border='1'><tr>"+
 					"<th>User ID</th>"+
 					"<th>First Name</th>"+
@@ -110,7 +113,7 @@ public class adminViewUsers extends HttpServlet {
 				out.print("</tr>");
 				out.print("<th><button onclick=\"window.location.href='adminDeleteUser.jsp'\">Delete User</button></th>");
 				//out.print("<th><form action=\"adminDeleteUser\"><input type='submit' value='delete user'></form></th>");
-				out.print("<th><form action><input type='submit' value='disable user'></form></th>");
+				//out.print("<th><form action><input type='submit' value='disable user'></form></th>");
 				
 			}
 		}
@@ -118,6 +121,7 @@ public class adminViewUsers extends HttpServlet {
 			System.out.println(p);
 		}
 		out.print("</table>");
+		//out.print("</div>");
 		
 	}
 

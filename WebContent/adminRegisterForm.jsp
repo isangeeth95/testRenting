@@ -17,7 +17,7 @@
 					<tr>
 						<td>First Name</td>
 						<td><input id="input" type="text"
-							placeholder="Enter First Name" name="fname1" required></td>
+							placeholder="Enter First Name" name="fname" required></td>
 					</tr>
 					<tr>
 						<td>Last Name</td>
