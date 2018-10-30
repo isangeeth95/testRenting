@@ -86,4 +86,18 @@ END $$
 
 
 --------------------------
+------------------------------------------------
+# create vehicle table
 
+create table vehicle(
+	uid varchar(5),
+	vehicle varchar(10),
+    type varchar(20) not null,
+    model varchar(6)  primary key,
+    vImage varchar(255), 
+    path varchar(255),
+	  hire real,
+    ac varchar(10) default 'Available',
+    bar varchar(10) default 'Available',
+    reason varchar(50) default 'Wedding, Airport Hire, For other functions',
+    place varchar(20) default 'All-Island');
