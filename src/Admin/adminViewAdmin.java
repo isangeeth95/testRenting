@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Login.DBManager;
+import QueryBuilder.Query;
+import QueryBuilder.QueryBuilder;
 
 /**
  * Servlet implementation class adminViewAdmin
@@ -65,7 +67,11 @@ public class adminViewAdmin extends HttpServlet {
 			Connection conn = db.getConnection();
 		
 			Statement stmt = conn.createStatement();
-			String sql = "select * from  admins";
+			
+			Query q1=new QueryBuilder().select("*").from("admins").build();
+			System.out.println(q1.toString());
+			
+			String sql = q1.toString();
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(((ResultSet) rs).next()){

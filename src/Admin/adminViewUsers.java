@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Login.DBManager;
+import QueryBuilder.Query;
+import QueryBuilder.QueryBuilder;
 
 /**
  * Servlet implementation class adminViewUsers
@@ -46,7 +48,6 @@ public class adminViewUsers extends HttpServlet {
 		out.print("<body>");
 		out.print("<div class=\"container\" align='center' style='background-image: linear-gradient(-90deg,Darkblue,aqua)'>");
 		out.print("<h1>Display the records of Users for Admin</h1>");
-		//out.print("<div  class=\"Details\">");
 		out.print("<table border='1'><tr>"+
 					"<th>User ID</th>"+
 					"<th>First Name</th>"+
@@ -67,7 +68,11 @@ public class adminViewUsers extends HttpServlet {
 			Connection conn = db.getConnection();
 		
 			Statement stmt = conn.createStatement();
-			String sql = "select * from  users";
+			
+			Query q1=new QueryBuilder().select("*").from("users").build();
+			System.out.println(q1.toString());
+			
+			String sql = q1.toString();
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(((ResultSet) rs).next()){
