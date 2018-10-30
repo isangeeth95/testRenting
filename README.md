@@ -77,7 +77,7 @@ CREATE TABLE `driverrequest` (
   PRIMARY KEY (`username`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   CONSTRAINT `username` FOREIGN KEY (`username`) REFERENCES `driver` (`username`)
-)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 # create trigger to delete driver
 
@@ -95,3 +95,18 @@ END $$
 --------------------------
 
 
+
+
+------------------------------------------------
+create table vehicle(
+	uid varchar(5),
+	vehicle varchar(10),
+    type varchar(20) not null,
+    model varchar(6)  primary key,
+    vImage varchar(255), 
+    path varchar(255),
+	hire real,
+    ac varchar(10) default 'Available',
+    bar varchar(10) default 'Available',
+    reason varchar(50) default 'Wedding, Airport Hire, For other functions',
+    place varchar(20) default 'All-Island');    
