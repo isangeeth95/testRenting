@@ -1,33 +1,57 @@
+<%@page import="Admin.Admin"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="register.css">
-<title>Admin Register</title>
+<link rel="stylesheet" type="text/css" href="getUserForUpdate.css">
+<title>Get Admin</title>
 </head>
-<%@include file="afterLoginHeader.jsp"%>
+<%
+	if (session.getAttribute("username") == null) {
+%>
+<jsp:include page="header.jsp"></jsp:include>
+<%
+	} else {
+%>
+<jsp:include page="afterLoginHeader.jsp"></jsp:include>
+<%
+	}
+%>
 <body>
 	<div class="container">
-		<h1 style="text-align: center; font-size: 50px">ADD AN ADMIN</h1>
+
+		<h1 style="text-align: center; font-size: 50px">Update Admin
+			Information</h1>
+		<br> <br>
+		<%
+		Admin admin=(Admin)request.getAttribute("admin");
+	%>
+
 		<div class="form">
-			<form action="adminRegisterServlet" method="post" enctype="multipart/form-data">
+			<form action="updateAdminServlet" method="post">
 				<table class="table">
+
+					<tr>
+						<td>Admin ID</td>
+						<td><input id="input" type="text" value='<%=admin.getAdminId() %>'
+							name="uid" disabled="disabled"></td>
+					</tr>
 					<tr>
 						<td>First Name</td>
 						<td><input id="input" type="text"
-							placeholder="Enter First Name" name="fname" required></td>
+							value='<%=admin.getFname() %>' name="fname"></td>
 					</tr>
 					<tr>
 						<td>Last Name</td>
 						<td><input id="input" type="text"
-							placeholder="Enter Last Name" name="lname" required></td>
+							value='<%=admin.getLname() %>' name="lname"></td>
 					</tr>
 					<tr>
 						<td>E mail</td>
 						<td><input id="input" type="text"
-							placeholder="Enter Email Address" name="email" required></td>
+							value='<%=admin.getEmail() %>' name="email"></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -42,23 +66,23 @@
 					</tr>
 					<tr>
 						<td>Country</td>
-						<td><input id="input" type="text" placeholder="Germany"
-							name="country" required></td>
+						<td><input id="input" type="text"
+							value='<%=admin.getCountry() %>' name="country"></td>
 					</tr>
 					<tr>
 						<td>City</td>
-						<td><input id="input" type="text" placeholder="Boston"
-							name="city" required></td>
+						<td><input id="input" type="text"
+							value='<%=admin.getCity() %>' name="city"></td>
 					</tr>
 					<tr>
 						<td>Mobile</td>
 						<td><input id="input" type="text"
-							placeholder="+94 77 123 4567" name="telNo" required></td>
+							value='<%=admin.getTelNo() %>' name="telNo"></td>
 					</tr>
 					<tr>
 						<td>User name</td>
 						<td><input id="input" type="text"
-							placeholder="Enter user name" name="uname" required></td>
+							value='<%=admin.getUname() %>' name="uname"></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -66,32 +90,33 @@
 					</tr>
 					<tr>
 						<td>Password</td>
-						<td><input id="input" type="password"
-							placeholder="Enter a Password" name="password" required></td>
+						<td><input id="input" type="text"
+							value='<%=admin.getPassword() %>' name="password"></td>
 					</tr>
 					<tr>
 						<td>Confirm password</td>
 						<td><input id="input" type="password"
-							placeholder="Confirm the Password" name="confirmPassword"
-							required></td>
+							value='<%=admin.getPassword() %>' name="confirmPassword" required></td>
 					</tr>
 					<tr>
 						<td></td>
 						<td style="font-size: 25px; color: red;">${passwordMatchingErr}</td>
 					</tr>
-					<tr>
-						<td>Upload Image</td>
-						<td><input id="input" type="file" name="image" required></td>
-					</tr>
-					
+
 
 				</table>
-				<br /> <input type="submit" value="Register as Admin" name="submitButton"
+				<br /> <input type="submit" value="Update" name="submitButton"
 					id="sButton">
 			</form>
 		</div>
 
 		<h1 style="font-size: 40px; color: red;">${insertUnsuccess}</h1>
+		
+		<br>
+		<br>
+		
+
+
 	</div>
 </body>
 <%@include file="footer.jsp"%>

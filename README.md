@@ -1,4 +1,4 @@
-# Session attributes
+#Session attributes
 
 session.setAttribute("loggedAs", "user");
 session.setAttribute("uid", dbUid);
@@ -7,11 +7,10 @@ session.setAttribute("password", dbpassword);
 session.setAttribute("imageName", imageName);
 
 
-# create yamudarawmak databse 
+# yamudarawmak databse table queries
 
 create database test1;
 
-# create admin table
 
 create table admins(
 adminId int(11) primary key auto_increment,
@@ -30,11 +29,7 @@ path varchar(255)
 
 ALTER TABLE admins AUTO_INCREMENT=1;
 
-# insert fisrt admin to admin table
-
 insert into admins (fname,lname,email,gender,country,city,telNo,uname,password,imageName,path) values("sangeeth","sankalpa","sangeeth","male","SL","madampe","+94775240944","admin1","111","","");
-
-# create user table
 
 create table users(
 uid int(11) primary key auto_increment,
@@ -52,8 +47,6 @@ path varchar(255)
 );
 
 ALTER TABLE users AUTO_INCREMENT=1;
-
-# create driver table
 
 create table driver(
 username varchar(50) primary key,
@@ -94,19 +87,3 @@ END $$
 
 --------------------------
 
-
-
-
-------------------------------------------------
-create table vehicle(
-	uid varchar(5),
-	vehicle varchar(10),
-    type varchar(20) not null,
-    model varchar(6)  primary key,
-    vImage varchar(255), 
-    path varchar(255),
-	hire real,
-    ac varchar(10) default 'Available',
-    bar varchar(10) default 'Available',
-    reason varchar(50) default 'Wedding, Airport Hire, For other functions',
-    place varchar(20) default 'All-Island');    

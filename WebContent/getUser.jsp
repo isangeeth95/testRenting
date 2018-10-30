@@ -22,7 +22,26 @@
 
 <body>
 	<div class="containerForUserDetails">
-		<br> <br>
+		<br> 
+		<div id="userNav">
+		<table>
+			<tr>
+				<td><a href="AddVehicle.jsp" />Add Your Own Vehicle & Start Earnning</td>
+			</tr>
+		</table>
+	</div>
+		<br><br>
+		
+		<div id="userNavListVehicle">
+		<table>
+			<tr>
+				<td><a href="#" />Get Your Vehicles Info</td>
+			</tr>
+		</table>
+	</div>
+	
+	<br><br>
+		
 		<div  class="userDetails" align="left">
 			<table border="1" cellpadding="12">
 			<%

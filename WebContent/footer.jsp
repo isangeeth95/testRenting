@@ -47,14 +47,14 @@
         <table>
             <tr>
                 <td><a href="https://www.facebook.com/" class="fa fa-facebook"></a></td>
-                <td><a href="#" class="fa fa-twitter"></a></td>
-                <td><a href="#" class="fa fa-youtube"></a></td>
+                <td><a href="https://www.twitter.com/" class="fa fa-twitter"></a></td>
+                <td><a href="https://www.youtube.com/" class="fa fa-youtube"></a></td>
             </tr>
 
             <tr>
-                <td><a href="#" class="fa fa-instagram"></a></td>
-                <td><a href="#" class="fa fa-pinterest"></a></td>
-                <td><a href="#" class="fa fa-rss"></a></td>
+                <td><a href="https://www.instagram.com/" class="fa fa-instagram"></a></td>
+                <td><a href="https://www.pinterest.com/" class="fa fa-pinterest"></a></td>
+                <td><a href="https://www.rss.com/" class="fa fa-rss"></a></td>
             </tr>
         </table>
 
