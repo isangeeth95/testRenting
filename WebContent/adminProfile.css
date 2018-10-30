@@ -43,7 +43,7 @@ border-spacing: 15px;
     padding-bottom: 5px;
     height: 30px;
     transition: color 2s;
-	background-color: Fuchsia   ;
+background-color: Fuchsia   ;
 }
 
 #adminNav td:hover a:hover {

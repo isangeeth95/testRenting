@@ -1,4 +1,4 @@
-<%@page import="Admin.Admin"%>
+<%@page import="Register.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,7 +26,6 @@ if(session.getAttribute("username")==null) {
 			<tr>
 				<td><a href="adminViewUsers" />Get Users</td>
 				<td><a href="adminViewDriver" />Get Drivers</td>
-				<td><a href="adminViewAdmin" />Get Admins</td>
 				<td><a href="adminRegisterForm.jsp" />Add Admins</td>
 			</tr>
 		</table>
@@ -37,12 +36,12 @@ if(session.getAttribute("username")==null) {
 		<div  class="adminDetails" align="left">
 			<table border="1" cellpadding="12">
 			<%
-					Admin admin= (Admin) request.getAttribute("admin");
+					User user = (User) request.getAttribute("user");
 					
 			%>
 			
 				<caption>
-					<h2><%=admin.getUname()%> Details</h2>
+					<h2><%=user.getUname()%> Details</h2>
 				</caption>
 				<tr>
 					<th>Admin ID</th>
@@ -60,17 +59,17 @@ if(session.getAttribute("username")==null) {
 				</tr>
 				
 				<tr>
-					<td><%=admin.getAdminId()%></td>
-					<td><%=admin.getFname()%></td>
-					<td><%=admin.getLname()%></td>
-					<td><%=admin.getEmail()%></td>
-					<td><%=admin.getGender()%></td>
-					<td><%=admin.getCountry()%></td>
-					<td><%=admin.getCity()%></td>
-					<td><%=admin.getTelNo()%></td>
-					<td><%=admin.getUname()%></td>
-					<td><%=admin.getPassword()%></td>
-					<td><img src="adminImages/<%=admin.getImageName() %>"  width="150"
+					<td><%=user.getUid()%></td>
+					<td><%=user.getFname()%></td>
+					<td><%=user.getLname()%></td>
+					<td><%=user.getEmail()%></td>
+					<td><%=user.getGender()%></td>
+					<td><%=user.getCountry()%></td>
+					<td><%=user.getCity()%></td>
+					<td><%=user.getTelNo()%></td>
+					<td><%=user.getUname()%></td>
+					<td><%=user.getPassword()%></td>
+					<td><img src="adminImages/<%=user.getImageName() %>"  width="150"
 						height="150">
 						<form method="POST" action="getAdminImageServlet">
 							<input type="hidden" name="uid>"
@@ -79,7 +78,7 @@ if(session.getAttribute("username")==null) {
 						</form>
 						</td>
 					<td>
-						<form method="POST" action="getAdminServlet">
+						<form method="POST" action="getUserServlet">
 							<input type="hidden" name="uid>"
 								value="<%=session.getAttribute("adminId")%>" /> <input type="submit"
 								value="Edit Admin" class="select-button" />

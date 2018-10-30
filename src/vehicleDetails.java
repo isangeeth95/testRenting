@@ -1,4 +1,4 @@
-package Admin;
+package Vehicle;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,16 +17,16 @@ import Login.DBManager;
 import Register.User;
 
 /**
- * Servlet implementation class adminDetails
+ * Servlet implementation class vehicleDetails
  */
-@WebServlet("/adminDetails")
-public class adminDetails extends HttpServlet {
+@WebServlet("/vehicleDetails")
+public class vehicleDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public adminDetails() {
+    public vehicleDetails() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,12 +35,14 @@ public class adminDetails extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
 		PrintWriter out = response.getWriter();
 		
-		User user=new User();
+		Vehicle vehicle=new Vehicle();
 		
 		HttpSession session=request.getSession();  
-		user.setUid((String)session.getAttribute("adminId"));
+		vehicle.setUid((String)session.getAttribute("uid"));
 		
 		DBManager db = new DBManager();
 		Connection conn = db.getConnection();
@@ -48,31 +50,33 @@ public class adminDetails extends HttpServlet {
 		try{
 			
 			Statement st = conn.createStatement();
-			String sql = "select adminId,fname,lname,email,gender,country,city,telNo,uname,password,imageName,path from admins where adminId = '"+user.getUid()+"'";
+			String sql = "select vehicle,type,model,vIamge,path,hire,AC,bar,reason,place from vehicle where model= '"+vehicle.getModel()+"'";
 			ResultSet rs = st.executeQuery(sql);
 			
 			while(rs.next()){
 				  
-				user.setUid(rs.getString(1));
-				user.setFname(rs.getString(2));
-				user.setLname(rs.getString(3));
-				user.setEmail(rs.getString(4));
-				user.setGender(rs.getString(5));
-				user.setCountry(rs.getString(6));
-				user.setCity(rs.getString(7));
-				user.setTelNo(rs.getString(8));
-				user.setUname(rs.getString(9));
-				user.setPassword(rs.getString(10));
-				user.setImageName(rs.getString(11));
-				user.setPath(rs.getString(12));	
+				//vehicle.setUid(rs.getString(1));
+				vehicle.setVehicle(rs.getString(1));
+				vehicle.setType(rs.getString(2));
+				vehicle.setModel(rs.getString(3));
+				vehicle.setVImage(rs.getString(4));
+				vehicle.setPath(rs.getString(5));
+				vehicle.setHire(rs.getString(6));
+				vehicle.setAC(rs.getString(7));
+				vehicle.setBar(rs.getString(8));
+				vehicle.setReason(rs.getString(9));
+				vehicle.setPlace(rs.getString(10));
+				
 			}
 			
-			request.setAttribute("user", user);
-			request.getRequestDispatcher("/adminProfile.jsp").forward(request,response);
+			request.setAttribute("vehicle", vehicle);
+			request.getRequestDispatcher("/getUser.jsp").forward(request,response);
+			request.getRequestDispatcher("/getVehicle.jsp").forward(request,response);
 		}
 		catch(Exception p){
 			System.out.println(p);
 		}
+		
 	}
 
 	/**
