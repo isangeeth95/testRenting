@@ -92,8 +92,11 @@ END $$
 
 --------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f38c459241320608cb598c7fa51745bc90ae29f1
 =======
 >>>>>>> f38c459241320608cb598c7fa51745bc90ae29f1
 ------------------------------------------------
@@ -107,15 +110,21 @@ create table vehicle(
     vImage varchar(255), 
     path varchar(255),
 <<<<<<< HEAD
+<<<<<<< HEAD
 	hire real,
     ac varchar(10) default 'Available',
     bar varchar(10) default 'Available',
     reason varchar(50) default 'Wedding, Airport Hire, For other functions',
     place varchar(20) default 'All-Island');
 =======
+=======
+>>>>>>> f38c459241320608cb598c7fa51745bc90ae29f1
 	  hire real,
     ac varchar(10) default 'Available',
     bar varchar(10) default 'Available',
     reason varchar(50) default 'Wedding, Airport Hire, For other functions',
     place varchar(20) default 'All-Island');
+<<<<<<< HEAD
+>>>>>>> f38c459241320608cb598c7fa51745bc90ae29f1
+=======
 >>>>>>> f38c459241320608cb598c7fa51745bc90ae29f1
