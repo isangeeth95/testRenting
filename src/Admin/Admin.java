@@ -2,7 +2,7 @@ package Admin;
 
 import javax.servlet.http.Part;
 
-public class Admin {
+public class Admin implements IAdmin{
 	private String adminId;
 	private String fname; // first name
 	private String lname; // last name

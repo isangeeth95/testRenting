@@ -4,7 +4,7 @@ import java.io.File;
 
 import javax.servlet.http.Part;
 
-public class User {
+public class User implements IUser{
 
 	private String uid;
 	private String fname; // first name
