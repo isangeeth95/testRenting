@@ -47,7 +47,7 @@ public class adminViewUsers extends HttpServlet {
 		rd.include(request, response);
 		out.print("<body>");
 		out.print("<div class=\"container\" align='center' style='background-image: linear-gradient(-90deg,Darkblue,aqua)'>");
-		out.print("<h1>Display the records of Users for Admin</h1>");
+		out.print("<h1>Display the records of Admins for Admin</h1>");
 		out.print("<table border='1'><tr>"+
 					"<th>User ID</th>"+
 					"<th>First Name</th>"+
@@ -70,9 +70,8 @@ public class adminViewUsers extends HttpServlet {
 			Statement stmt = conn.createStatement();
 			
 			Query q1=new QueryBuilder().select("*").from("users").build();
-			System.out.println(q1.toString());
-			
-			String sql = q1.toString();
+			System.out.println(q1.print());			
+			String sql = q1.print();
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(((ResultSet) rs).next()){

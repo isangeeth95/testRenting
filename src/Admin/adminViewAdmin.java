@@ -69,9 +69,9 @@ public class adminViewAdmin extends HttpServlet {
 			Statement stmt = conn.createStatement();
 			
 			Query q1=new QueryBuilder().select("*").from("admins").build();
-			System.out.println(q1.toString());
+			System.out.println(q1.print());
 			
-			String sql = q1.toString();
+			String sql = q1.print();
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(((ResultSet) rs).next()){
