@@ -86,7 +86,32 @@ FOR EACH ROW BEGIN
 DELETE FROM driverrequest ;
 END $$
 
+# create rentVehicles table
 
+create table rentVehicles(
+vehicleId int(5) primary key auto_increment,
+type varchar(50),
+costPerDay varchar(255),
+costPerKM varchar(255),
+imageName varchar(255),
+path varchar(255),
+rentCategory varchar(255)
+);
+
+ALTER TABLE rentVehicles AUTO_INCREMENT=1;
+
+# -----create shopping cart table
+
+create table shoppingCart(
+orderId int(5) primary key auto_increment,
+userId int(5),
+vehicleId int(5),
+rentCategory varchar(255),
+duration varchar(255),
+cost varchar(255)
+);
+
+ALTER TABLE shoppingCart AUTO_INCREMENT=1;
 
 
 
