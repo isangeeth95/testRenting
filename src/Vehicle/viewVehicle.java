@@ -71,60 +71,60 @@ public class viewVehicle extends HttpServlet {
 			
 			while(rs.next()){
 
-				vehicle.setVehicle(rs.getString(1));
-
-				vehicle.setType(rs.getString(2));
-
-				vehicle.setModel(rs.getString(3));
-
-				vehicle.setVImage(rs.getString(4));
-				
-				vehicle.setPath(rs.getString(5));
-
-				vehicle.setHire(rs.getString(6));
-
-				vehicle.setAC(rs.getString(7));
-			
-				vehicle.setBar(rs.getString(8));
-
-				vehicle.setReason(rs.getString(9));
-
-				vehicle.setPlace(rs.getString(10));
+//				vehicle.setVehicle(rs.getString(1));
+//
+//				vehicle.setType(rs.getString(2));
+//
+//				vehicle.setModel(rs.getString(3));
+//
+//				vehicle.setVImage(rs.getString(4));
+//				
+//				vehicle.setPath(rs.getString(5));
+//
+//				vehicle.setHire(rs.getString(6));
+//
+//				vehicle.setAC(rs.getString(7));
+//			
+//				vehicle.setBar(rs.getString(8));
+//
+//				vehicle.setReason(rs.getString(9));
+//
+//				vehicle.setPlace(rs.getString(10));
 
 			}
 				out.print("<tr style='font-size: 30px;text-align: center;'><td style=' padding:7px;'>");
-				out.print(vehicle.getVehicle());
-				out.print("</td>");
-				out.print("<td>");
-				out.print(vehicle.getType());
-				out.print("</td>");
-				out.print("<td>");
-				out.print(vehicle.getModel());
-				out.print("</td>");
-				out.print("<td>");
-				out.print(vehicle.getVImage());
-				out.print("</td>");
-				out.print("<td>");
-				out.print(vehicle.getPath());
-				out.print("</td>");
-				out.print("<td>");
-				out.print(vehicle.getHire());
-				out.print("</td>");
-				out.print("<td>");
-				out.print(vehicle.getAC());
-				out.print("</td>");
-				out.print("<td>");
-				out.print(vehicle.getBar());
-				out.print("</td>");
-				out.print("<td>");
-				out.print("<td>");
-				out.print(vehicle.getReason());
-				out.print("</td>");
-				out.print("<td>");
-				out.print("<td>");
-				out.print(vehicle.getPlace());
-				out.print("</td>");
-				out.print("</tr>");
+//				out.print(vehicle.getVehicle());
+//				out.print("</td>");
+//				out.print("<td>");
+//				out.print(vehicle.getType());
+//				out.print("</td>");
+//				out.print("<td>");
+//				out.print(vehicle.getModel());
+//				out.print("</td>");
+//				out.print("<td>");
+//				out.print(vehicle.getVImage());
+//				out.print("</td>");
+//				out.print("<td>");
+//				out.print(vehicle.getPath());
+//				out.print("</td>");
+//				out.print("<td>");
+//				out.print(vehicle.getHire());
+//				out.print("</td>");
+//				out.print("<td>");
+//				out.print(vehicle.getAC());
+//				out.print("</td>");
+//				out.print("<td>");
+//				out.print(vehicle.getBar());
+//				out.print("</td>");
+//				out.print("<td>");
+//				out.print("<td>");
+//				out.print(vehicle.getReason());
+//				out.print("</td>");
+//				out.print("<td>");
+//				out.print("<td>");
+//				out.print(vehicle.getPlace());
+//				out.print("</td>");
+//				out.print("</tr>");
 				
 			
 		}

@@ -27,7 +27,7 @@
 				<td><a href="#" />Services</td>
 				<td><a href="#" />Shop</td>
 				<td><a href="aboutUs.jsp" />About Us</td>
-				<td><a href="#" />Gallery</td>
+				<td><a href="Gallery.jsp" />Gallery</td>
 				<td><a href="contact.jsp" />Contact Us</td>
 			</tr>
 		</table>

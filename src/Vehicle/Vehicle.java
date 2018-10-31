@@ -3,121 +3,116 @@ package Vehicle;
 import javax.servlet.http.Part;
 
 public class Vehicle {		
-			private String vehicle; //vehicle category
+			private String vehicleId;
 			private String type;
-			private String model; //model no.
-			private String vImage;
+			private String costPerDay;
+			private String costPerKM;
+			private String imageName;
 			private String path;
-			private String hire; //hire per day
-			private String AC; //AC availability
-			private String bar;//Mini-bar available
-			private String reason; //for which type of reasons vehicles are providing
-			private String place; //place our services spread
-			private String uid; //user id
+			private String rentCategory;
 			
-			
-		public String getVehicle() {
-			// TODO Auto-generated method stub
-			return vehicle;
-		}
-		
-		public void setVehicle(String vehicle){
-			this.vehicle=vehicle;
-		}
-		
-		public String getType() {
-			// TODO Auto-generated method stub
-			return type;
-		}
-		
-		public void setType(String type){
-			this.type=type;
-		}
 
-		public String getModel() {
-			// TODO Auto-generated method stub
-			return model;
-		}
-		
-		public void setModel(String model){
-			this.model=model;
-		}
 
-		public String getVImage() {
-			return vImage;
-		}
 
-		public void setVImage(String vImage) {
-			this.vImage = vImage;
-		}
-		
-		public String getPath(){
-			return path;
-		}
-		
-		public void setPath(String path){
-			this.path=path;
-		}
-		
-		public String getHire() {
-			return hire;
-		}
-		
-		public void setHire(String hire){
-			this.hire=hire;
-		}
-		
-		public String getAC() {
-			// TODO Auto-generated method stub
-			return AC;
-		}
-		
-		public void setAC(String AC){
-			this.AC=AC;
-		}
-		
-		public String getBar() {
-			// TODO Auto-generated method stub
-			return bar;
-		}
-		
-		public void setBar(String bar){
-			this.bar=bar;
-		}
-		
-		public String getReason() {
-			// TODO Auto-generated method stub
-			return reason;
-		}
-		
-		public void setReason(String reason){
-			this.reason=reason;
-		}
+		public String getVehicleId() {
+				return vehicleId;
+			}
 
-		public String getPlace() {
-			// TODO Auto-generated method stub
-			return place;
-		}
-		
-		public void setPlace(String place){
-			this.place=place;
-		}
-		
-		public String getUid() {
-			return uid;
-		}
 
-		public void setUid(String uid) {
-			this.uid = uid;
-		}
-		
-		
-		public String toString(){
-			return "Vehicle = " + vehicle + "\n" + "Type = " + type  +" Image=" + vImage+ "\n"+"Pat="+ path +"\n" +"Model = " + model  + "\n" + "Hire= " + hire+"\n"+ "AC = " + AC + "\n" +"Bar = " + bar +"\n" + "Reason = " + reason + "\n" + "Place = " + place + "\n"
-					+ "Uid="+ uid ;
-		}
-		
-		public String extractVImage(Part part){
+
+
+			public void setVehicleId(String vehicleId) {
+				this.vehicleId = vehicleId;
+			}
+
+
+
+
+			public String getType() {
+				return type;
+			}
+
+
+
+
+			public void setType(String type) {
+				this.type = type;
+			}
+
+
+
+
+			public String getCostPerDay() {
+				return costPerDay;
+			}
+
+
+
+
+			public void setCostPerDay(String string) {
+				this.costPerDay = string;
+			}
+
+
+
+
+			public String getCostPerKM() {
+				return costPerKM;
+			}
+
+
+
+
+			public void setCostPerKM(String string) {
+				this.costPerKM = string;
+			}
+
+
+
+
+			public String getImageName() {
+				return imageName;
+			}
+
+
+
+
+			public void setImageName(String imageName) {
+				this.imageName = imageName;
+			}
+
+
+
+
+			public String getPath() {
+				return path;
+			}
+
+
+
+
+			public void setPath(String path) {
+				this.path = path;
+			}
+
+
+
+
+			public String getRentCategory() {
+				return rentCategory;
+			}
+
+
+
+
+			public void setRentCategory(String rentCategory) {
+				this.rentCategory = rentCategory;
+			}
+
+
+
+
+		public String extractImageName(Part part){
 			String contentDisp=part.getHeader("content-disposition");
 			String[] items=contentDisp.split(";");
 			for(String s:items){

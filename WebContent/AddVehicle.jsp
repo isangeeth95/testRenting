@@ -27,98 +27,48 @@
 				<table class="table">
 
 					<tr>
-						<td>Select Vehicle Category :</td>
+						<td>Vehicle Model :</td>
 						<td><input style="height: 20px; width: 20px;" type="radio"
-							name="vehicle" value="Car"> Car <input
-							style="height: 20px; width: 20px;" type="radio" name="vehicle"
-							value="Jeep">Jeep <input
-							style="height: 20px; width: 20px;" type="radio" name="vehicle"
-							value="MiniVan">Mini-Van <input
-							style="height: 20px; width: 20px;" type="radio" name="vehicle"
-							value="Van">Van <input
-							style="height: 20px; width: 20px;" type="radio" name="vehicle"
-							value="Bus">Bus</td>
+							name="type" value="car"> Car <input
+							style="height: 20px; width: 20px;" type="radio" name="type"
+							value="jeep">Jeep <input
+							style="height: 20px; width: 20px;" type="radio" name="type"
+							value="van">Van <input
+							style="height: 20px; width: 20px;" type="radio" name="type"
+							value="bus">Bus</td>
 
 					</tr>
 
 					<tr>
-						<td>Vehicle Type :</td>
-						<td><input id="input" type="text" name="type" required></td>
+						<td>Cost per day :</td>
+						<td><input id="input" type="number" min="0" max="50000" name="costPerDay" required></td>
 					</tr>
 
 					<tr>
-						<td>No Plate.:</td>
-						<td><input id="input" type="text" placeholder="0000XX"
-							name="model" required></td>
-
-					</tr>
-					<tr>
-						<td></td>
-						<td style="font-size: 20px; color: red;">${modelExist}</td>
-					</tr>
-
-					<tr>
-						<td>Upload Vehicle Image</td>
-						<td><input id="input" type="file" name="vImage" required></td>
-					</tr>
-
-					<tr>
-						<td>Hire per day:</td>
-						<td><input id="input" type="number" min="0" name="hire"
-							required></td>
+						<td>Cost per KM :</td>
+						<td><input id="input" type="number" min="0" max="5000" placeholder="Rs:25.00/="
+							name="costPerKM" required></td>
 
 					</tr>
 
 					<tr>
-						<td>AC Available:</td>
+						<td>Vehicle Image</td>
+						<td><input id="input" type="file" name="imageName" required></td>
+					</tr>
+
+					<tr>
+						<td>Rent Category :</td>
 						<td><input style="height: 20px; width: 20px;" type="radio"
-							name="ac" value="ac"> A/C <input
-							style="height: 20px; width: 20px;" type="radio" name="ac"
-							value="non_ac">Non A/C</td>
+							name="rentCategory" value="wedding"> WEDDING <input
+							style="height: 20px; width: 20px;" type="radio" name="rentCategory"
+							value="air-port">AIR PORT<input
+							style="height: 20px; width: 20px;" type="radio" name="rentCategory"
+							value="tour">TOUR
 					</tr>
 
-					<tr>
-						<td>Mini-Bar Available:</td>
-						<td><input style="height: 20px; width: 20px;" type="radio"
-							name="bar" value="bar"> Available <input
-							style="height: 20px; width: 20px;" type="radio" name="bar"
-							value="non_bar">Non Available</td>
-					</tr>
-
-					<tr>
-						<td>Hire for :</td>
-						<td><input style="height: 20px; width: 20px;" type="checkbox"
-							name="reason" value="f1"> Airport Transfer<br> <input
-							style="height: 20px; width: 20px;" type="checkbox" name="reason"
-							value="f2"> Wedding Transfer<br> <input
-							style="height: 20px; width: 20px;" type="checkbox" name="reason"
-							value="f3"> Trip Hires<br> <input
-							style="height: 20px; width: 20px;" type="checkbox" name="reason"
-							value="f4"> Other <textarea
-								style="height: 50px; width: 100px;" name="reason" id="reason">Type here</textarea><br>
-						<br></td>
-					</tr>
-
-					<tr>
-						<td>Region :</td>
-						<td><input style="height: 20px; width: 20px;" type="checkbox"
-							name="place" value="r1"> Colombo Areas only.<br> <input
-							style="height: 20px; width: 20px;" type="checkbox" name="place"
-							value="r2"> Western Province<br> <input
-							style="height: 20px; width: 20px;" type="checkbox" name="place"
-							value="r3"> Southern Province<br> <input
-							style="height: 20px; width: 20px;" type="checkbox" name="place"
-							value="r4"> Central Province<br> <input
-							style="height: 20px; width: 20px;" type="checkbox" name="place"
-							value="r5"> All-Island<br> <input
-							style="height: 20px; width: 20px;" type="checkbox" name="place"
-							value="r6"> Other <textarea
-								style="height: 50px; width: 100px;" name="place" id="place">Type here</textarea><br>
-						<br></td>
-					</tr>
 
 				</table>
-				<br /> <input type="submit" value="Register" name="submitButton"
+				<br /> <input type="submit" value="Add Vehicle To Rent" name="submitButton"
 					id="sButton">
 			</form>
 		</div>

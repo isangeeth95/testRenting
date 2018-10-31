@@ -53,7 +53,7 @@
 				<td><a href="#" />Services</td>
 				<td><a href="#" />Shop</td>
 				<td><a href="aboutUs.jsp" />About Us</td>
-				<td><a href="#" />Gallery</td>
+				<td><a href="Gallery.jsp" />Gallery</td>
 				<td><a href="contact.jsp" />Contact Us</td>
 				<%
 					if (session.getAttribute("loggedAs") == "driver") {
@@ -64,6 +64,7 @@
 					if (session.getAttribute("loggedAs") == "user") {
 				%>
 				<td><a href="userDetails" />Profile</td>
+				<td><a href="userShoppingCart" />$ CART</td>
 				<%
 					}
 					if (session.getAttribute("loggedAs") == "admin") {

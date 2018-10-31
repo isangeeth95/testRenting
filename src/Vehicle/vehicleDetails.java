@@ -42,41 +42,41 @@ public class vehicleDetails extends HttpServlet {
 		Vehicle vehicle=new Vehicle();
 		
 		HttpSession session=request.getSession();  
-		vehicle.setUid((String)session.getAttribute("uid"));
+		//vehicle.setUid((String)session.getAttribute("uid"));
 		
 		DBManager db = new DBManager();
 		Connection conn = db.getConnection();
 		
-		try{
+		//try{
 			
-			Statement st = conn.createStatement();
-			String sql = "select vehicle,type,model,vIamge,path,hire,AC,bar,reason,place from vehicle where model= '"+vehicle.getModel()+"'";
-			ResultSet rs = st.executeQuery(sql);
+			//Statement st = conn.createStatement();
+			//String sql = "select vehicle,type,model,vIamge,path,hire,AC,bar,reason,place from vehicle where model= '"+vehicle.getModel()+"'";
+			//ResultSet rs = st.executeQuery(sql);
 			
-			while(rs.next()){
+			//while(rs.next()){
 				  
 				//vehicle.setUid(rs.getString(1));
-				vehicle.setVehicle(rs.getString(1));
-				vehicle.setType(rs.getString(2));
-				vehicle.setModel(rs.getString(3));
-				vehicle.setVImage(rs.getString(4));
-				vehicle.setPath(rs.getString(5));
-				vehicle.setHire(rs.getString(6));
-				vehicle.setAC(rs.getString(7));
-				vehicle.setBar(rs.getString(8));
-				vehicle.setReason(rs.getString(9));
-				vehicle.setPlace(rs.getString(10));
-				
-			}
-			
-			request.setAttribute("vehicle", vehicle);
-			request.getRequestDispatcher("/getUser.jsp").forward(request,response);
-			request.getRequestDispatcher("/getVehicle.jsp").forward(request,response);
-		}
-		catch(Exception p){
-			System.out.println(p);
-		}
-		
+//				vehicle.setVehicle(rs.getString(1));
+//				vehicle.setType(rs.getString(2));
+//				vehicle.setModel(rs.getString(3));
+//				vehicle.setVImage(rs.getString(4));
+//				vehicle.setPath(rs.getString(5));
+//				vehicle.setHire(rs.getString(6));
+//				vehicle.setAC(rs.getString(7));
+//				vehicle.setBar(rs.getString(8));
+//				vehicle.setReason(rs.getString(9));
+//				vehicle.setPlace(rs.getString(10));
+//				
+//			}
+//			
+//			request.setAttribute("vehicle", vehicle);
+//			request.getRequestDispatcher("/getUser.jsp").forward(request,response);
+//			request.getRequestDispatcher("/getVehicle.jsp").forward(request,response);
+//		}
+//		catch(Exception p){
+//			System.out.println(p);
+//		}
+//		
 	}
 
 	/**

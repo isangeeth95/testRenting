@@ -121,7 +121,7 @@
 
 
 #packagesBase1{
-	border: 2px solid grey;
+	/*border: 2px solid grey;*/
     box-sizing: border-box;
     min-width: 1050px;
     margin-top: 50px;
@@ -139,7 +139,7 @@
 }
 
 #packagesBase2{
-	border: 2px solid grey;
+	/*border: 2px solid grey;*/
     box-sizing: border-box;
     min-width: 1050px;
     margin-left: 600px;
@@ -157,7 +157,7 @@
 }
 
 #packagesBase3{
-	border: 2px solid grey;
+	/*border: 2px solid grey;*/
     box-sizing: border-box;
     min-width: 1050px;
     margin-top: 150px;

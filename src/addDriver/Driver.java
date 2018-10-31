@@ -2,7 +2,7 @@ package addDriver;
 
 import javax.servlet.http.Part;
 
-public class Driver implements IDriver{
+public class Driver {
 	private String fname; //first name
 	private String lname; //last name
 	private String email; //email

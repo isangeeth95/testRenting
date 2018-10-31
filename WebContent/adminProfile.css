@@ -53,6 +53,44 @@ border-spacing: 15px;
 }
 
 
+#userNav table{
+border-spacing: 15px;
+margin:auto 400px;
+}
+
+#userNav table tr{
+    position: center;
+    border-spacing: 0px;
+    padding: 0px;
+    margin: auto;
+}
+
+#userNav tr a{
+//border: 2px solid black;
+    height: 45px;
+    margin: auto;
+    width: 1000px;
+    font-weight: normal;
+    color: -moz-visitedhyperlinktext;
+    font-weight: bold;
+    font-size: 25px;
+    transition: font-size 1s;
+}
+
+
+#userNav td{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 30px;
+    transition: color 2s;
+	background-color: Fuchsia   ;
+}
+
+#userNav td:hover a:hover {
+    background-color: Fuchsia   ;
+    font-size: 30px;
+    border-radius: 10px;
+}
 
 /* .containerForAdminDetails{ */
 /*     -webkit-box-sizing: border-box; */

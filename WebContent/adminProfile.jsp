@@ -31,6 +31,21 @@ if(session.getAttribute("username")==null) {
 			</tr>
 		</table>
 	</div>
+	<br/><br/><br/>
+	<div id="userNav">
+		<table>
+			<tr>
+				<td><a href="AddVehicle.jsp" />Add Vehicles to company & Start Earnning</td>
+			</tr>
+		</table>
+	</div>
+	<div id="userNav">
+		<table>
+			<tr>
+				<td><a href="adminViewVehicles" />Get All Vehicles Info</td>
+			</tr>
+		</table>
+	</div>
 	
 	<div class="containerForAdminDetails">
 		<br> <br>

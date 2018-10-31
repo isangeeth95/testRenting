@@ -61,26 +61,11 @@ public class addVehicle extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		PrintWriter out = response.getWriter();
-
-		// vehicle.setUid((String) session.getAttribute("uid"));
-		vehicle.setUid("1");
-		vehicle.setVehicle(request.getParameter("vehicle"));
+		
 		vehicle.setType(request.getParameter("type"));
-		vehicle.setModel(request.getParameter("model"));
-		vehicle.setHire(request.getParameter("hire"));
-		vehicle.setAC(request.getParameter("ac"));
-		vehicle.setBar(request.getParameter("bar"));
-		vehicle.setReason(request.getParameter("reason"));
-		vehicle.setPlace(request.getParameter("place"));
-
-		// out.write("Susccess " +request.getParameter("vehicle")+"\n");
-		// out.write("Susccess " +request.getParameter("type")+"\n");
-		// out.write("Susccess " +request.getParameter("model")+"\n");
-		// out.write("Susccess " +request.getParameter("hire")+"\n");
-		// out.write("Susccess " +request.getParameter("ac")+"\n");
-		// out.write("Susccess " +request.getParameter("bar")+"\n");
-		// out.write("Susccess " +request.getParameter("reason")+"\n");
-		// out.write("Susccess " +request.getParameter("place")+"\n");
+		vehicle.setCostPerDay(request.getParameter("costPerDay"));
+		vehicle.setCostPerKM(request.getParameter("costPerKM"));
+		vehicle.setRentCategory(request.getParameter("rentCategory"));
 
 		response.setContentType("text/html");
 
@@ -92,73 +77,38 @@ public class addVehicle extends HttpServlet {
 		if (conn == null) {
 			write.write("Connection Not Established");
 		} else {
-			
+
 			try {
-				Statement st = conn.createStatement();
-				String sql = "select * from vehicle where model = '"
-						+ vehicle.getModel() + "'";
-				ResultSet rs = st.executeQuery(sql);
+				String sql2 = "insert into rentVehicles (type,costPerDay,costPerKM,imageName,path,rentCategory)"
+						+ "values (?,?,?,?,?,?)";
 
-				if (rs.next()) {
-					Object message = "Vehicle is already available.";
-					request.setAttribute("modelExist", message);
-					request.getRequestDispatcher("/AddVehicle.jsp").forward(
-							request, response);
+				PreparedStatement pre = conn.prepareStatement(sql2);
 
+				pre.setString(1, vehicle.getType());
+				pre.setString(2, vehicle.getCostPerDay());
+				pre.setString(3, vehicle.getCostPerKM());
+
+				if (ServletFileUpload.isMultipartContent(request)) {
+					Part part = request.getPart("imageName");
+					vehicle.setImageName(vehicle.extractImageName(part));
+					vehicle.setPath("C:\\Users\\sangeeth\\workspaceNew\\yamudarawmak\\WebContent\\rentVehiclesImages"
+							+ File.separator + vehicle.getImageName());
+					File fileSaveDir = new File(vehicle.getPath());
+					part.write(vehicle.getPath() + File.separator);
 				}
+				pre.setString(4, vehicle.getImageName());
+				pre.setString(5, vehicle.getPath());
+				pre.setString(6, vehicle.getRentCategory());
 
-				else if (!vehicle.getModel().matches("^[A-Za-z]{2}[0-9]{4}$")) {
-					Object message = "Invalid model number.";
-					request.setAttribute("modelExist", message);
-					request.getRequestDispatcher("/AddVehicle.jsp").forward(
-							request, response);
+				pre.execute();
 
-				}
+				request.getRequestDispatcher("/home.jsp").forward(request,
+						response);
+			}
 
-				else {
-					String sql2 = "insert into vehicle (uid,vehicle,type,model,vImage,path,hire,ac,bar,reason,place)"
-							+ "values (?,?,?,?,?,?,?,?,?,?,?)";
-
-					PreparedStatement pre = conn.prepareStatement(sql2);
-
-					pre.setString(1, vehicle.getUid());
-					pre.setString(2, vehicle.getVehicle());
-					pre.setString(3, vehicle.getType());
-					pre.setString(4, vehicle.getModel());
-
-					if (ServletFileUpload.isMultipartContent(request)) {
-						Part part = request.getPart("vImage");
-						vehicle.setVImage(vehicle.extractVImage(part));
-						vehicle.setPath("C:\\Users\\Nimshi\\Desktop\\new workspace\\yamudarawmak-master-new\\WebContent\\vehicleImages"
-								+ File.separator + vehicle.getVImage());
-						File fileSaveDir = new File(vehicle.getPath());
-						part.write(vehicle.getPath() + File.separator);
-					}
-					pre.setString(5, vehicle.getVImage());
-					pre.setString(6, vehicle.getPath());
-					pre.setString(7, vehicle.getHire());
-					pre.setString(8, vehicle.getAC());
-					pre.setString(9, vehicle.getBar());
-					pre.setString(10, vehicle.getReason());
-					pre.setString(11, vehicle.getPlace());
-
-					pre.execute();
-
-					//Object message = vehicle.getModel() + " Registered";
-					//request.setAttribute("message", message);
-					//request.getRequestDispatcher("/member.jsp").forward(
-							//request, response);
-					//request.getRequestDispatcher("/header.jsp").forward(
-							//request, response);
-					
-					request.getRequestDispatcher("/home.jsp").forward(request,
-							response);
-				}
-
-			} catch (Exception e) {
+			catch (Exception e) {
 				System.out.println("Got an exception");
 				System.out.println(e.getMessage());
-				// System.out.println(vehicle.getUid());
 			}
 		}
 	}

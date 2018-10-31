@@ -47,7 +47,7 @@ public class adminViewAdmin extends HttpServlet {
 		out.print("<body>");
 		out.print("<div class=\"container\" align='center' style='background-image: linear-gradient(-90deg, coral, yellow)'>");
 		out.print("<h1>Display the records of Admins for Admin</h1>");
-		out.print("<table border='1'><tr>"+
+		out.print("<table border='1'style='color:blue;background-color: powderblue;width:60%;font-size: 18px;'><tr style='color:red;font-size: 30px;'>"+
 					"<th>Admin ID</th>"+
 					"<th>First Name</th>"+
 					"<th>Last Name</th>"+

@@ -75,8 +75,8 @@ public class adminViewDriver extends HttpServlet {
 			}
 				out.print("<th><form action style='margin-top:5px;padding:5px;'><input type='button' onclick=\"window.location.href='adminDeleteDriver.jsp'\" value='delete driver' style='padding:5px;background:#4CAF50;"
 				+ "transition-duration: 0.4s;display: inline-block;cursor: pointer;-webkit-transition-duration: 0.4s;color:white;font-size:20px;font-weight:bold;border: none;'></form></th>");
-			//	out.print("<th><form action style='margin-top:5px;padding:5px;'><input type='submit' action='' method='get' value='disable driver' style='padding:5px;background:#4CAF50;"
-			//	+ "transition-duration: 0.4s;display: inline-block;cursor: pointer;-webkit-transition-duration: 0.4s;color:white;font-size:20px;font-weight:bold;border: none;'></form></th>");
+				out.print("<th><form action style='margin-top:5px;padding:5px;'><input type='submit' action='' method='get' value='disable driver' style='padding:5px;background:#4CAF50;"
+				+ "transition-duration: 0.4s;display: inline-block;cursor: pointer;-webkit-transition-duration: 0.4s;color:white;font-size:20px;font-weight:bold;border: none;'></form></th>");
 			
 		
 		}
