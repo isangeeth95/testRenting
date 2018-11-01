@@ -18,30 +18,46 @@ if(session.getAttribute("username")==null) {
 <%
 }%>
 
-<body>
-	<div class="container">
+<body >
+	<div align="center" class="container" style="height: 30%; width: 75%; margin-top: 250px; margin-bottom: 20px; padding: 30px; border: 1px solid black;background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);">
 
-		<div
-			style="height: 50%; width: 50%; margin-top: 250px; margin-left: 200px; margin-bottom: 200px; padding: 30px; border: 1px solid black">
+		<div>
 
 			<%
 				if (session != null) {
 					if (session.getAttribute("username") != null) {
 						String fname = (String) session.getAttribute("fname");
 						String lname = (String) session.getAttribute("lname");
-						out.print("Hello Welcome ");
+						out.print("<h1>Hello "+fname+" "+lname+"  Welcome you on behalf of Yamuda Raumak<h1>");
 					} else {
 						response.sendRedirect("driverLogin.jsp");
 					}
 				}
+			String imageName = (String) session.getAttribute("imageName");
+			if(imageName==null)
+				imageName="defaultUser.png";
+			String uname=(String)session.getAttribute("username");
 			%>
+			<br>
+			<table>
+				<tr>
+					<td><img src="usersImages/<%=imageName%>" width="400"
+						height="400"></td>
+				</tr>
+				
+			</table>
+			<br>
+			<abbr style="font-size: 30px;">
+			Thank you for registering as a driver in our company.Your service is needed to promote our company.Hense you have to
+			give your service to customer in good manner.
+			</abbr>
 			<form action="ViewDriver">
 				<table>
 					<tr>
 						<br>
 						<br>
 						<td colspan="1"><input type="submit"
-							value="Click to see your frofile"></td>
+							value="Click to see your frofile" style="padding: 10px;font-size: 30px;"></td>
 					</tr>
 				</table>
 			</form>
